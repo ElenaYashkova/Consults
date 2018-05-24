@@ -16,6 +16,7 @@
         <input type="submit">
     </div>
     <a href="register.php">Регистрация</a>
+
 </form>
 </body>
 </html>
