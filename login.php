@@ -15,7 +15,7 @@
         <input type="password" name="password" placeholder="password..."><br>
         <input type="submit">
     </div>
-    <a href="register.php">Регистрация</a>
+    <a href="#">Регистрация</a>
 </form>
 </body>
 </html>
