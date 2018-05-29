@@ -1,0 +1,43 @@
+/* CSS Document */
+*, html, body{margin:0; padding:0; list-style: none; outline: none; text-decoration: none; box-sizing: border-box; border: none}
+
+body{width: 100%; height: 100vh}
+/*блок авторизации*/
+.ContainerAuthoriz{width: 420px; height: auto;  background: #262730; position: absolute;
+    top:50%; left: 50%; margin-top: -190px; margin-left: -210px; padding: 0 20px;}
+.Auth{display: none}
+.Register{display: none}
+.ContainerAuthoriz h2{font-family: "Open Sans"; font-size: 22px; color: #fff; line-height: 100px; font-weight: lighter;}
+.ContainerAuthoriz .formLine{width: 100%; height: 45px; background: #3a3a46; padding: 15px; display: flex; justify-content: space-between;
+    margin-bottom: 20px; border-radius: 5px;}
+.ContainerAuthoriz .formLine input{font-family: "Open Sans"; font-size: 18px; color: #fff; line-height: 30px; font-weight: lighter; background: transparent}
+.ContainerAuthoriz .formLine .icon{width: 15px; height: 15px; background-size: contain;}
+.log{background: url("../images/user.png") no-repeat }
+.reg{background: url("../images/decrypted.png") no-repeat }
+.ContainerAuthoriz .lineBtn{display: flex; justify-content: space-between; padding: 35px 0;}
+.ContainerAuthoriz .lineBtn div{width: 165px; height: 50px; border-radius: 5px; color: #fff; text-align: center; font-size: 18px; font-family: "Open Sans";
+    font-weight: bold; line-height: 50px; cursor: pointer;}
+#log, #reg{ width: 100%;
+    color: #fff;
+    background: transparent;
+    font-size: 18px; font-weight: bold; text-align: center}
+.ContainerAuthoriz .lineBtn .btnLog{background: #ff5757;}
+.ContainerAuthoriz .lineBtn .btnReg{background: #7979e2;}
+.btnReg a, .btnLog a{color: #fff;}
+
+
+/*containerMenu*/
+.mainContainer{width: 800px; height: auto; min-height: 450px;  background: #2f3d4c;   margin: 50px auto; display: flex }
+
+.containerMenu{width: 35%; height: auto; min-height: 450px; border-right: 1px solid #000; padding-bottom: 30px;}
+.contUser{width: 100%; height: auto; padding: 30px;}
+.userImg{width: 150px; height: 150px; border-radius: 50%; border:3px solid #fff; margin:  0px auto 15px;  }
+.userName{font-family: "Open Sans"; font-size: 20px; color:#fff; text-align: center; margin-bottom: 15px;}
+.btnSetting{width: 70%; height: 45px; line-height: 45px; background: #ff7f66; border-radius: 5px; text-align: center; color:#fff;
+    font-size: 18px; margin:0 auto 15px; cursor: pointer;}
+.line_menu{width: 100%; height: 50px;background: #2a3744; border-bottom: 1px solid #2f3d4b; padding: 0 50px;cursor: pointer;}
+.line_menu p{line-height: 50px; font-size: 20px; font-family: "Open Sans"; font-weight: bold; color:#fff;}
+.line_menu:nth-child(2n){background: #2c3948;}
+.line_menu:hover{background: #336699;}
+
+.containerContent{width: 75%; height: auto; min-height: 450px;}
