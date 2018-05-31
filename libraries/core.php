@@ -1,6 +1,5 @@
 <?php
 function core_navigate(){
-    //include LIBS_PATH . "auth.php";
     if(auth_is_auth()){
         core_render("main");
     }
@@ -33,7 +32,7 @@ function core_removeFromArrayInFile($name, $index):void{
     core_saveArrayToFile($name,$arr);
 };
 
-function core_render($view, $data=[], $templates="default"){       //шаблонизировать
+function core_render($view, $data=[], $templates="default"){
     $content = VIEWS_PATH.$view.".php";
     extract($data);
     include TEMPLATES_PATH.$templates.".php";
@@ -43,16 +42,3 @@ function is_empty():bool {
     foreach (func_get_args() as $arg) if(empty($arg)) return true;
     return false;
 }
-
-//function core_register(){
-//    $regexparr = [
-//        "login"=>'/^\w{2,12}$/',
-//        "password"=>'/^\S{6,16}$/'
-//    ];
-//
-//    foreach ($regexparr as $key=>$val){
-//        if (preg_match($val,$_POST[$key])){
-//
-//        }
-//    }
-//}
