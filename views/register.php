@@ -1,6 +1,6 @@
 <div class="ContainerAuthoriz Register">
     <h2>User Registration</h2>
-    <form action="#" class="Authoriz">
+    <form action="#" class="Authoriz" method="post" enctype="multipart/form-data">
         <div class="formLine">
             <input type="text" name="login" placeholder="Login">
             <div class="icon log"></div>
