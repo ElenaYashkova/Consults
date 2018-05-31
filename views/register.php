@@ -18,7 +18,7 @@
                 <a href="#">LOGIN</a>
             </div>
             <div class="btnReg">
-                <input type="sublin" value="REGISTER" id="reg">
+                <input type="submit" value="REGISTER" id="reg">
             </div>
         </div>
     </form>

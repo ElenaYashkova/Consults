@@ -6,7 +6,7 @@ body{width: 100%; height: 100vh; padding: 30px; background: url("../images/backg
 /*блок авторизации*/
 .ContainerAuthoriz{width: 420px; height: auto;  background: #262730; position: absolute;
     top:50%; left: 50%; margin-top: -190px; margin-left: -210px; padding: 0 20px;}
-.Auth{display: none}
+/*.Auth{display: none}*/
 /*.Register{display: none}*/
 .ContainerAuthoriz h2, .container_form h2{font-family: "Open Sans"; font-size: 22px; color: #fff; line-height: 100px; font-weight: lighter;}
 .ContainerAuthoriz .formLine{width: 100%; height: 45px; background: #3a3a46; padding: 15px; display: flex; justify-content: space-between;

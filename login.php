@@ -1,3 +1,4 @@
 <?php
-auth_login($_POST("login"),$_POST("pass"));
-header("Location:".$_SERVER["HTTP_REFERER"]);
+include "libraries/core.php";
+include "controller/auth.php";
+login();
