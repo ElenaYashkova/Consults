@@ -15,6 +15,4 @@ define("CONTROLLERS_PATH",DOCROOT."controllers/");
 include LIBS_PATH."core.php";
 include LIBS_PATH . "auth.php";
 
-
-
 core_navigate();
