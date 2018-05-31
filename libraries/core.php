@@ -1,9 +1,10 @@
 <?php
+
 function core_navigate(){
     if(auth_is_auth()){
         core_render("main");
     }
-    else core_render("login");
+    else core_render("main");
 }
 
 

@@ -1,6 +1,7 @@
+
 <div class="ContainerAuthoriz Auth">
     <h2>User Login</h2>
-    <form action="login.php" class="Authoriz" method="post">
+    <form action="login.php" class="Authoriz" method="post" enctype="multipart/form-data">
         <div class="formLine">
             <input type="text" name="login" placeholder="Login">
             <div class="icon log"></div>
