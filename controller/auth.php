@@ -1,6 +1,6 @@
 <?php
 function reg(){
-    if(is_empty(@$_POST["login"],@$_POST["pass"],@$_POST("email")) || !auth_register($_POST["login"],$_POST["pass"],$_POST("email"))){
+    if(is_empty(@$_POST["login"],@$_POST["pass"],@$_POST["email"]) || !auth_register($_POST["login"],$_POST["pass"],$_POST["email"])){
         echo "Произошла ошибка регистрации";
     }else{
         header("Location:".$_SERVER["HTTP_REFERER"]);

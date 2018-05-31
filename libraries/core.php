@@ -1,5 +1,4 @@
 <?php
-
 function core_navigate(){
     if(auth_is_auth()){
         core_render("main");
@@ -10,12 +9,12 @@ function core_navigate(){
 
 function core_saveArrayToFile($name, array $arr){
     $jsonstr = json_encode($arr);
-    $path = STORAGE_PATH."{$name}.json";
+    $path = __DIR__."/../storage/"."{$name}.json";
     file_put_contents($path,$jsonstr);
 };
 
 function core_loadArrayFromFile($name) {
-    $path = STORAGE_PATH."{$name}.json";
+    $path = __DIR__."/../storage/"."{$name}.json";
     if(!file_exists($path))return[];
     $data = file_get_contents($path);
     return json_decode($data,true);
