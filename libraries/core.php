@@ -4,25 +4,13 @@ function core_getData(string $name){
     return include DATA_PATH.$name.".php";
 }
 
-
-
-//function core_navigate(){
-//    if(auth_is_auth()){
-//        core_render("main");
-//    }
-//    else core_render("login");
-//}
-
-
 function core_saveArrayToFile($name, array $arr):void{
     $jsonstr = json_encode($arr);
-//    $path = __DIR__."/../storage/"."{$name}.json";
     $path = STORAGE_PATH."{$name}.json";
     file_put_contents($path,$jsonstr);
 };
 
 function core_loadArrayFromFile($name):array {
-//    $path = __DIR__."/../storage/"."{$name}.json";
     $path = STORAGE_PATH."{$name}.json";
     if(!file_exists($path))return[];
     $data = file_get_contents($path);
@@ -49,7 +37,6 @@ function core_render($view, array $data=[], $templates="default"):void{
 
 function core_load_model(string $name):void{
     include MODELS_PATH.$name.".php";
-//    include __DIR__."/../libraries/"."{$name}.php";
 }
 
 function is_empty():bool {
@@ -58,28 +45,26 @@ function is_empty():bool {
 }
 
 function core_navigate(){
-    if(auth_is_auth()){
-        $routs=core_getData("routes");
-        $url=trim(explode("?",$_SERVER["REQUEST_URI"])[0],"/");
-        $prefix="PROGECT/Consults/";
-        foreach ($routs as $route=>$command){
-
-            if(trim($prefix.$route, "/")==$url){
-                $cmd=explode("@", $command);
-                $controller_name=$cmd[0]."_controller";
-                $action_name=$cmd[1];
-                if(!file_exists(CONTROLLERS_PATH.$controller_name.".php")){
-                    echo "file".CONTROLLERS_PATH.$controller_name.".php"." not exist";
-                };
-                include CONTROLLERS_PATH.$controller_name.".php";
-                if(!function_exists($action_name)){
-                    echo "function".$action_name." not exist";
-                };
-                call_user_func($action_name);
-                return;
-            }
+    $routs=core_getData("routes");
+    if(auth_is_auth()) $routs=$routs["auth"];
+    else $routs=$routs["notAuth"];
+    $url=trim(explode("?",$_SERVER["REQUEST_URI"])[0],"/");
+    $prefix="PROGECT/Consults/";
+    foreach ($routs as $route=>$command){
+        if(trim($prefix.$route, "/")==$url){
+            $cmd=explode("@", $command);
+            $controller_name=$cmd[0]."_controller";
+            $action_name="action_".$cmd[1];
+            if(!file_exists(CONTROLLERS_PATH.$controller_name.".php")){
+                echo "file".CONTROLLERS_PATH.$controller_name.".php"." not exist";
+            };
+            include CONTROLLERS_PATH.$controller_name.".php";
+            if(!function_exists($action_name)) {
+                echo "function".$action_name." not exist";
+            };
+            call_user_func($action_name);
+            return;
         }
-        echo "404";
     }
-    else core_render("login");
+    echo "404";
 }

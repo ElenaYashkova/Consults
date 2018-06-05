@@ -1,6 +1,6 @@
 <div class="ContainerAuthoriz Auth">
     <h2>User Login</h2>
-    <form action="login.php" class="Authoriz" method="post" enctype="multipart/form-data">
+    <form action="login" class="Authoriz" method="post" enctype="multipart/form-data">
         <div class="formLine">
             <input type="text" name="login" placeholder="Login">
             <div class="icon log"></div>
@@ -22,7 +22,7 @@
 
 <div class="ContainerAuthoriz Register">
     <h2>User Registration</h2>
-    <form action="reg.php" class="Authoriz" method="post" enctype="multipart/form-data">
+    <form action="reg" class="Authoriz" method="post" enctype="multipart/form-data">
         <div class="formLine">
             <input type="text" name="login" placeholder="Login">
             <div class="icon log"></div>

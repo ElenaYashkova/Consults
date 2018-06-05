@@ -13,7 +13,7 @@
                 <p>Consultation List</p>
             </li>
             <li class="line_menu" id="Exit">
-                <p>Exit</p>
+                <a href="logout">Exit</a>
             </li>
         </ul>
     </div>
@@ -52,17 +52,17 @@
 <div class="container_form  newVisit">
     <h2>Add New Visitor</h2>
     <div class="btn addStudent"><span class="btnAdd">Add New Student</span></div>
-    <form action=""  method="post" enctype="multipart/form-data">
+    <form action="addNewVisitor"  method="post" enctype="multipart/form-data">
         <div class="formLine">
-            <select name="grupp" class="grVisitior" label="grupp">
-                <option value="EKO-16">EKO-16</option>
-                <option value="EKO-17">EKO-17</option>
+            <select name="group" class="grVisitior" label="grupp">
+                <option value="1528139014236">EKO-15</option>
+                <option value="1528140453386">TR</option>
             </select>
         </div>
         <div class="formLine">
             <select name="student" id="nameVisitor" >
-                <option value="Vasiliy Ivanov">Vasiliy Ivanov</option>
-                <option value="Vasiliy Ivanov">Vasiliy Ivanov</option>
+                <option value="1528147490_1819">Sonya Sotnick</option>
+                <option value="1528193162_49">Toma Sotnick</option>
             </select>
         </div>
         <div class="lineBtn">

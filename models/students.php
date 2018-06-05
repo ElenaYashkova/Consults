@@ -1,7 +1,7 @@
 <?php
 
 function model_students_getAll(){
-    return core_loadArrFromFile("student");
+    return core_loadArrayFromFile("student");
 }
 
 function model_students_add($id_group,$name,$surname){
@@ -17,5 +17,19 @@ function model_students_getByIdGroup($id_group){
     return array_filter($students, function ($student) use ($id_group){
         return $student["id_group"]==$id_group;
     });
+}
+function model_students_getById($id){
+    $students=model_students_getAll();
+    return array_shift(array_filter($students, function ($student) use ($id){
+        return $student["id"]==$id;
+    }));
+}
+function model_students_deleteById($id){
+    $students=model_students_getAll();
+    $arr=[];
+    foreach ($students as $student){
+        if(!$student["id"]==$id) $arr[]=$student;
+    }
+    core_saveArrayToFile("student");
 }
 
