@@ -1,5 +1,7 @@
 <?php
+
 function reg(){
+
     if(is_empty(@$_POST["login"],@$_POST["pass"],@$_POST["email"]) || !auth_register($_POST["login"],$_POST["pass"],$_POST["email"])){
         echo "Произошла ошибка регистрации";
     }else{
@@ -18,4 +20,8 @@ function login(){
 function logout(){
     auth_logout();
     header("Location:".$_SERVER["HTTP_REFERER"]);
+}
+
+function index(){
+    core_render("main", ["title"=>"Consults::Login"], $templates="default");
 }
