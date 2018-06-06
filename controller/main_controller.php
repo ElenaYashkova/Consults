@@ -24,6 +24,7 @@ function action_addNewStudent(){
 }
 
 function action_addNewVisitor(){
+    //TODO create arr [id_consult, id_stud]
     core_load_model("students");
     if(is_empty(@$_POST["student"])){
         echo "Заполните все поля!";

@@ -84,8 +84,8 @@ margin-bottom: 20px; border-radius: 5px;}
 .btnCans{background: #7979e2;}
 .btn.addStudent, .btn.addGrupp{width: 120px; background: #7979e2; border-radius: 5px; margin-left: calc(100% - 120px); margin-bottom: 15px;}
 
-.newVisit{ width: 420px; height: auto; top:50px; left: 50%; margin-left: -210px; }
-.newStudent{ width: 420px; height: auto; top:120px; left: 55%; margin-left: -210px; }
-.newGrupp{ width: 340px; height: auto; top:300px; left: 65%; margin-left: -210px; }
+.newVisit{ width: 420px; height: auto; top:50px; left: 50%; margin-left: -210px; display: none }
+.newStudent{ width: 420px; height: auto; top:120px; left: 55%; margin-left: -210px; display: none }
+.newGrupp{ width: 340px; height: auto; top:300px; left: 65%; margin-left: -210px; display: none}
 
 .newVisit.active, .newStudent.active, .newGrupp.active{display: block}

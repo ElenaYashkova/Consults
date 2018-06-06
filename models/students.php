@@ -30,6 +30,9 @@ function model_students_deleteById($id){
     foreach ($students as $student){
         if(!$student["id"]==$id) $arr[]=$student;
     }
-    core_saveArrayToFile("student");
+    core_saveArrayToFile("student",$arr);
 }
 
+function model_students_existInGroup(){
+    //TODO check name and surname in this group
+}

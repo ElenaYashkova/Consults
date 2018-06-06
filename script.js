@@ -1,4 +1,28 @@
 
+let AJAX={
+    post:function (url, params, callback, onerror) {
+        let xhr=new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        let data=new FormData();
+        for(let key in params) data.append(key,params[key]);
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState!==4) return;
+            if(xhr.status===200) callback(xhr.responseText);
+            else if(onerror) onerror();
+        };
+        xhr.send(data);
+    },
+    get:function (url, callback, onerror) {
+        let xhr=new XMLHttpRequest();
+        xhr.open("GET",url,true);
+        xhr.onreadystatechange=function (ev) {
+            if(xhr.readyState!==4) return;
+            if(xhr.status===200) callback(xhr.responseText);
+            else if(onerror) onerror();
+        };
+        xhr.send();
+    }
+};
 
 var page ={
     init:function () {
@@ -9,6 +33,9 @@ var page ={
     }
 };
 page.mainMenu={
+    init:function () {
+
+    }
 };
 page.addConsult={
     init:function () {
