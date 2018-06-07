@@ -1,0 +1,1 @@
+<div class="error404" style="width: 100%; height:100vh; background-image: url('images/404.png')"></div>

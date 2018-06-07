@@ -28,6 +28,14 @@
             <div class="icon log"></div>
         </div>
         <div class="formLine">
+            <input type="text" name="name" placeholder="Name">
+            <div class="icon log"></div>
+        </div>
+        <div class="formLine">
+            <input type="text" name="surname" placeholder="Surname">
+            <div class="icon log"></div>
+        </div>
+        <div class="formLine">
             <input type="password" name="pass" placeholder="Password">
             <div class="icon reg"></div>
         </div>
