@@ -17,12 +17,6 @@ function _auth_getUserById($id){
 
 function auth_register($login, $name, $surname, $pass, $mail){
     $users = _auth_getUsersArray();
-    foreach ($users as $user) {
-        if ($user["login"] == $login) return "loginexist";
-    }
-    if(!preg_match("/^\w{2,20}$/i",$login)) return "logininvalid"; // Логин должен сожержать только буквы и цифры от 2 до 20 символов
-    if(!preg_match("/^\S{6,20}$/i",$pass)) return "passinvalid"; // Пароль должен содержать от 6 до 20 символов
-    if(!preg_match("/^\S+@\w+.\w+(.\w*)*$/i",$mail)) return "mailinvalid"; // Неправильный адресс электронной почты
     $users[] = [
         "id" =>time().rand(0,9999999),
         "login" => $login,
@@ -32,20 +26,9 @@ function auth_register($login, $name, $surname, $pass, $mail){
         "mail" => $mail
     ];
     _auth_saveUsersArray($users);
-    return true;
 }
 
-function auth_login($login,$pass){
-    $users = _auth_getUsersArray();
-    $current_user = NULL;
-    foreach ($users as $user)
-        if ($user["login"] == $login) {
-            $current_user = $user;
-            break;
-        }
-    if ($current_user === NULL) return "nologin"; // Пользователя с таким логином не существует
-    if($current_user["pass"]!==md5($pass)) return "nopass"; // Неправильный пароль
-
+function auth_login($current_user){
     $_SESSION["user_id"] = $current_user["id"];
     $_SESSION["user_ip"] = md5($_SERVER["REMOTE_ADDR"]);
     $_SESSION["user_agent"] = md5($_SERVER["HTTP_USER_AGENT"]);

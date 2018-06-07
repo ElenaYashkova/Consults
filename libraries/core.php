@@ -4,7 +4,7 @@ function core_getData(string $name){
     return include DATA_PATH.$name.".php";
 }
 
-function core_saveArrayToFile($name, array $arr):void{
+function core_saveArrayToFile($name,$arr){
     $jsonstr = json_encode($arr);
     $path = STORAGE_PATH."{$name}.json";
     file_put_contents($path,$jsonstr);
@@ -29,7 +29,7 @@ function core_removeFromArrayInFile($name, $index):void{
     core_saveArrayToFile($name,$arr);
 };
 
-function core_render($view, array $data=[], $templates="default"):void{
+function core_render($view, array $data=[], $templates="default"){
     $content = VIEWS_PATH.$view.".php";
     extract($data);
     include TEMPLATES_PATH.$templates.".php";

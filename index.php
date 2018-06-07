@@ -1,5 +1,5 @@
 <?php
-define("DOCROOT",__DIR__."/");
+define("DOCROOT", __DIR__ . "/");
 
 define("LIBS_PATH",DOCROOT."libraries/");
 define("DATA_PATH",DOCROOT."data/");
@@ -12,7 +12,7 @@ define("VIEWS_PATH",DOCROOT."views/");
 define("CONTROLLERS_PATH",DOCROOT."controller/");
 
 
-include LIBS_PATH."core.php";
-include LIBS_PATH ."auth.php";
+include LIBS_PATH . "core.php";
+include LIBS_PATH . "auth.php";
 
 core_navigate();
