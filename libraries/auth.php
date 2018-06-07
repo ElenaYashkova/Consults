@@ -15,18 +15,22 @@ function _auth_getUserById($id){
     return NULL;
 }
 
-function auth_register($login, $pass, $mail){
+function auth_register($login, $name, $surname, $pass, $mail){
     $users = _auth_getUsersArray();
-    foreach ($users as $user)
-        if ($user["login"] == $login) return false;
-
+    foreach ($users as $user) {
+        if ($user["login"] == $login) return "loginexist";
+    }
+    if(!preg_match("/^\w{2,20}$/i",$login)) return "logininvalid"; // Логин должен сожержать только буквы и цифры от 2 до 20 символов
+    if(!preg_match("/^\S{6,20}$/i",$pass)) return "passinvalid"; // Пароль должен содержать от 6 до 20 символов
+    if(!preg_match("/^\S+@\w+.\w+(.\w*)*$/i",$mail)) return "mailinvalid"; // Неправильный адресс электронной почты
     $users[] = [
         "id" =>time().rand(0,9999999),
         "login" => $login,
+        "name" => $name,
+        "surname" => $surname,
         "pass" => md5($pass),
         "mail" => $mail
     ];
-
     _auth_saveUsersArray($users);
     return true;
 }
@@ -39,8 +43,8 @@ function auth_login($login,$pass){
             $current_user = $user;
             break;
         }
-    if ($current_user === NULL) return false;
-    if($current_user["pass"]!==md5($pass)) return false;
+    if ($current_user === NULL) return "nologin"; // Пользователя с таким логином не существует
+    if($current_user["pass"]!==md5($pass)) return "nopass"; // Неправильный пароль
 
     $_SESSION["user_id"] = $current_user["id"];
     $_SESSION["user_ip"] = md5($_SERVER["REMOTE_ADDR"]);

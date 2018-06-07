@@ -66,5 +66,6 @@ function core_navigate(){
             return;
         }
     }
-    echo "404";
+    //echo "404";
+    core_render("404");
 }
