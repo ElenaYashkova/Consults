@@ -70,11 +70,13 @@ page.formGrupp={
     init:function () {
         this.container=document.querySelector(".newGrupp");
         this.btnBack=this.container.querySelector(".btnCans");
+        this.btnAdd=this.container.querySelector("#addGrup");
         this.bindEvent();
     },
     bindEvent:function () {
         this.btnBack.addEventListener("click", this.hide.bind(this));
-        
+        this.btnAdd.addEventListener("click", this.hide.bind(this));
+
     },
     hide:function () {
         this.container.style.display="none";

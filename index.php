@@ -9,10 +9,10 @@ define("TEMPLATES_PATH",DOCROOT."templates/");
 
 define("MODELS_PATH",DOCROOT."models/");
 define("VIEWS_PATH",DOCROOT."views/");
-define("CONTROLLERS_PATH",DOCROOT."controllers/");
+define("CONTROLLERS_PATH",DOCROOT."controller/");
 
 
 include LIBS_PATH."core.php";
-include LIBS_PATH . "auth.php";
+include LIBS_PATH ."auth.php";
 
 core_navigate();
