@@ -1,3 +1,5 @@
+<script type="text/javascript" src="/PROGECT/Consults/script.js"></script>
+
 <div class="mainContainer">
     <div class="containerMenu">
         <div class="contUser">
@@ -21,8 +23,8 @@
         <div class="listContent">
             <form action="" id="addNewConsult" method="post" enctype="multipart/form-data">
                 <div class="line_nameConsult">
-                    <input id="dataConsult" value="22.05.2018" name="dataConsult" readonly>
-                    <input id="timeConsult" value="12.30" name="timeConsult" readonly>
+<!--                    <p class="nameConsult">22.05.2018</p>-->
+<!--                    <p class="nameConsult">12.30</p>-->
                 </div>
                 <div class="btnAdd btnVisitor">Add New Visitor</div>
                 <div class="containerVisitors">
@@ -52,7 +54,7 @@
 <div class="container_form  newVisit">
     <h2>Add New Visitor</h2>
     <div class="btn addStudent"><span class="btnAdd">Add New Student</span></div>
-    <form action="addNewVisitor"  method="post" enctype="multipart/form-data">
+    <div class="wrap">
         <div class="formLine">
             <select name="group" class="grVisitior" label="grupp">
                 <option value="1528139014236">EKO-15</option>
@@ -73,14 +75,14 @@
                 <input type="submit" value="OK" id="addVis">
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 
 <div class="container_form  newStudent">
     <h2>Create New Student</h2>
     <div class="btn addGrupp"><span class="btnAdd">Add New Grupp</span></div>
-    <form action="addNewStudent"  method="post" enctype="multipart/form-data">
+    <div class="wrap">
         <div class="formLine">
             <select name="group" class="grVisitior" label="grupp">
                 <option value="1528139014236">EKO-15</option>
@@ -101,13 +103,13 @@
                 <input type="submit" value="OK" id="addStud">
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 
 <div class="container_form  newGrupp">
     <h2>Create New Grupp</h2>
-    <form action="addNewGroup"  method="post" enctype="multipart/form-data">
+    <div class="wrap">
         <div class="formLine">
             <input type="text" name="grupName" placeholder="Name grupp">
         </div>
@@ -119,5 +121,5 @@
                 <input type="submit" value="OK" id="addGrup">
             </div>
         </div>
-    </form>
+    </div>
 </div>

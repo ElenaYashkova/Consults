@@ -5,7 +5,8 @@ return [
         "logout"=>"auth@logout",
         "addNewGroup"=>"main@addNewGroup",
         "addNewStudent"=>"main@addNewStudent",
-        "addNewVisitor"=>"main@addNewVisitor"
+        "addNewVisitor"=>"main@addNewVisitor",
+        "openConsult"=>"consults@openConsult"
     ],
     "notAuth"=>[
         ""=>"auth@login_index",

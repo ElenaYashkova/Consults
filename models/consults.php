@@ -20,11 +20,12 @@ function model_consults_create($user_id){
         "status"=>"open"
     ]);
 }
-function model_consults_getByStatus($status){
-    $consults=model_consults_getAll();
-    return array_shift(array_filter($consults, function ($consult) use ($status){
-        return $consult["status"]==$status;
-    }));
+function model_consults_getByStatus($status,$user_id){
+    $consults=model_consults_getAllByUser($user_id);
+    foreach ($consults as $consult){
+        if($consult["status"]==$status) return $consult;
+    }
+    return NULL;
 }
 function model_consults_close($id){
     $consults=model_consults_getAll();

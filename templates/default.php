@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" type="text/css" href="/PROGECT/Consults/css/style.css">
-    <script type="text/javascript" src="/PROGECT/Consults/script.js"></script>
+<!--    <script type="text/javascript" src="/PROGECT/Consults/script.js"></script>-->
     <title><?=$title?></title>
-    <script src="script/login.js"></script>
+<!--    <script src="script/login.js"></script>-->
 
 </head>
 <body>
