@@ -28,22 +28,22 @@
                 </div>
                 <div class="btnAdd btnVisitor">Add New Visitor</div>
                 <div class="containerVisitors">
-                    <div class="lineVisitor">
-                        <p class="visitor">
-                            <span >Vasiliy</span>
-                            <span >Ivanov</span>
-                        </p>
-                        <p class="grupp">Eko-16</p>
-                        <div class="btnDelVisitor">X</div>
-                    </div>
-                    <div class="lineVisitor">
-                        <p class="visitor">
-                            <span >Vasiliy</span>
-                            <span >Ivanov</span>
-                        </p>
-                        <p class="grupp">Eko-16</p>
-                        <div class="btnDelVisitor">X</div>
-                    </div>
+<!--                    <div class="lineVisitor">-->
+<!--                        <p class="visitor">-->
+<!--                            <span >Vasiliy</span>-->
+<!--                            <span >Ivanov</span>-->
+<!--                        </p>-->
+<!--                        <p class="grupp">Eko-16</p>-->
+<!--                        <div class="btnDelVisitor">X</div>-->
+<!--                    </div>-->
+<!--                    <div class="lineVisitor">-->
+<!--                        <p class="visitor">-->
+<!--                            <span >Vasiliy</span>-->
+<!--                            <span >Ivanov</span>-->
+<!--                        </p>-->
+<!--                        <p class="grupp">Eko-16</p>-->
+<!--                        <div class="btnDelVisitor">X</div>-->
+<!--                    </div>-->
                 </div>
                 <input type="submit" value="Create" class="btnAdd" id="addFormConsult">
             </form>
@@ -56,13 +56,13 @@
     <div class="btn addStudent"><span class="btnAdd">Add New Student</span></div>
     <div class="wrap">
         <div class="formLine">
-            <select name="group" class="grVisitior" label="grupp">
+            <select name="group" class="grVisitior" label="grupp" disabled>
                 <option value="1528139014236">EKO-15</option>
                 <option value="1528140453386">TR</option>
             </select>
         </div>
         <div class="formLine">
-            <select name="student" id="nameVisitor" >
+            <select name="student" id="nameVisitor" disabled>
                 <option value="1528147490_1819">Sonya Sotnick</option>
                 <option value="1528193162_49">Toma Sotnick</option>
             </select>

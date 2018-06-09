@@ -18,6 +18,16 @@ function model_students_getByIdGroup($id_group){
         return $student["id_group"]==$id_group;
     });
 }
+
+function model_students_getAllByIdGroup($id_group){
+    $students=model_students_getAll();
+    $arr=[];
+    foreach ($students as $student){
+        if(!$student["id_group"]==$id_group) $arr[]=$student;
+    }
+    return $arr;
+}
+
 function model_students_getById($id){
     $students=model_students_getAll();
     return array_shift(array_filter($students, function ($student) use ($id){

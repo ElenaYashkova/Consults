@@ -3,10 +3,15 @@ return [
     "auth"=>[
         ""=>"auth@main_index",
         "logout"=>"auth@logout",
-        "addNewGroup"=>"main@addNewGroup",
-        "addNewStudent"=>"main@addNewStudent",
+
+        "addNewGroup"=>"groups@addNewGroup",
+        "getAllGroups"=>"groups@getAllGroups",
+
+        "addNewStudent"=>"students@addNewStudent",
         "addNewVisitor"=>"main@addNewVisitor",
-        "openConsult"=>"consults@openConsult"
+
+        "openConsult"=>"consults@openConsult",
+        "getAllConsultVisitors"=>"visitors@getAllConsultVisitors"
     ],
     "notAuth"=>[
         ""=>"auth@login_index",

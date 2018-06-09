@@ -4,7 +4,7 @@ function model_visitors_getAll(){
 }
 
 function model_visitors_getAllByConsult($consult_id){
-    $visitors= model_consults_getAll();
+    $visitors= model_visitors_getAll();
     $arr=[];
     foreach ($visitors as $visitor){
         if($visitor["consult_id"]==$consult_id) $arr[]=$visitor;
