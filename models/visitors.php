@@ -23,7 +23,17 @@ function model_visitors_delete($consult_id,$student_id){
     $visitors=model_visitors_getAll();
     $arr=[];
     foreach ($visitors as $visitor){
-        if(!$visitor["consult_id"]==$consult_id && !$visitor["student_id"]==$student_id ) $arr[]=$visitor;
+        if($visitor["consult_id"]!==$consult_id) $arr[]=$visitor;
+        if($visitor["consult_id"]===$consult_id){
+           if($visitor["student_id"]!== $student_id) $arr[]=$visitor;
+        }
     }
     core_saveArrayToFile("visitors",$arr);
+}
+function model_visitors_notExist($consult_id,$student_id){
+    $visitors=model_visitors_getAllByConsult($consult_id);
+    foreach ($visitors as $visitor){
+        if($visitor["student_id"]===$student_id) return false;
+    }
+    return true;
 }

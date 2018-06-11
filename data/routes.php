@@ -7,11 +7,15 @@ return [
         "addNewGroup"=>"groups@addNewGroup",
         "getAllGroups"=>"groups@getAllGroups",
 
+        "getAllStudByGroup"=>"students@getAllStudByGroup",
         "addNewStudent"=>"students@addNewStudent",
-        "addNewVisitor"=>"main@addNewVisitor",
 
         "openConsult"=>"consults@openConsult",
-        "getAllConsultVisitors"=>"visitors@getAllConsultVisitors"
+        "closeConsult"=>"consults@closeConsult",
+
+        "addNewVisitor"=>"visitors@addNewVisitor",
+        "getAllConsultVisitors"=>"visitors@getAllConsultVisitors",
+        "delVisitor"=>"visitors@delVisitor"
     ],
     "notAuth"=>[
         ""=>"auth@login_index",

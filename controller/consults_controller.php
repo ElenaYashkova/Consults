@@ -9,3 +9,9 @@ function action_openConsult(){
     echo json_encode($c);
 
 }
+
+function action_closeConsult(){
+    core_load_model("consults");
+    model_consults_close(@$_POST["id"]);
+    header("Location:".$_SERVER["HTTP_REFERER"]);
+}

@@ -34,8 +34,7 @@ function model_consults_close($id){
         if($consult["id"]==$id){
             $consult["status"]="close";
             $arr[]=$consult;
-        }
-        $arr[]=$consult;
+        }else $arr[]=$consult;
     }
     core_saveArrayToFile("consults",$arr);
 }

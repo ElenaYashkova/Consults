@@ -23,17 +23,21 @@ function model_students_getAllByIdGroup($id_group){
     $students=model_students_getAll();
     $arr=[];
     foreach ($students as $student){
-        if(!$student["id_group"]==$id_group) $arr[]=$student;
+        if($student["id_group"]==$id_group) $arr[]=$student;
     }
     return $arr;
 }
 
 function model_students_getById($id){
     $students=model_students_getAll();
-    return array_shift(array_filter($students, function ($student) use ($id){
-        return $student["id"]==$id;
-    }));
-}
+//    return array_shift(array_filter($students, function ($student) use ($id){
+//        return $student["id"]==$id;
+//    }));
+    foreach ($students as $student){
+        if($student["id"]===$id) return $student;
+    }
+};
+
 function model_students_deleteById($id){
     $students=model_students_getAll();
     $arr=[];
