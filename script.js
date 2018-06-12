@@ -52,10 +52,12 @@ page.mainMenu={
     onClickAddConsult:function () {
         page.addConsult.show();
         page.userConsults.hide();
+        page.consultInfo.hide();
     },
     onClickListConsults:function () {
         page.userConsults.show();
         page.addConsult.hide();
+        page.consultInfo.hide();
     }
 
 };
@@ -65,7 +67,7 @@ page.addConsult={
         this.btnAddVisitor=this.container.querySelector(".btnVisitor");
         this.containerVisitors=this.container.querySelector(".containerVisitors");
         this.lineName=this.container.querySelector(".line_nameConsult");
-        this.btnDelVisitor=this.container.querySelector(".btnDelVisitor");
+        this.btnDelVisitor=this.container.querySelector(".del");
         this.btnClose=this.container.querySelector("#addFormConsult");
         this.bindEvent();
         this.toOpenConsult();
@@ -76,7 +78,6 @@ page.addConsult={
         this.btnClose.addEventListener("click",this.closeConsult.bind(this));
     },
     showFormVisitor:function () {
-        // page.formVisitor.init();
         page.formVisitor.show();
         page.formVisitor.btnAdd.setAttribute("data-class",this.container.getAttribute("data-class"));
 
@@ -121,7 +122,6 @@ page.addConsult={
                 var lineVisitor=document.createElement("div");
                 lineVisitor.className="lineVisitor";
                 lineVisitor.setAttribute("data-class",student["id"]);
-
                 var p=document.createElement("p");
                 p.className="visitor";
                 var spanSurname=document.createElement("span");
@@ -130,13 +130,11 @@ page.addConsult={
                 spanName.innerText=student["name"];
                 p.appendChild(spanName);
                 p.appendChild(spanSurname);
-
                 var group=document.createElement("p");
                 group.className="grupp";
                 group.innerText=student["group_name"];
-
                 var btn=document.createElement("div");
-                btn.className="btnDelVisitor";
+                btn.className="del";
                 lineVisitor.appendChild(p);
                 lineVisitor.appendChild(group);
                 lineVisitor.appendChild(btn);
@@ -146,7 +144,7 @@ page.addConsult={
 
     },
     deleteVisitor:function (e) {
-        if(e.target.matches(".btnDelVisitor")){
+        if(e.target.matches(".del")){
             var consult_id=e.target.closest("#addNewConsult").getAttribute("data-class");
             var student_id=e.target.closest(".lineVisitor").getAttribute("data-class");
             AJAX.post("/PROGECT/Consults/delVisitor",{consult_id:consult_id, student_id:student_id}, this.onDeletedVisitor.bind(this));
@@ -400,33 +398,77 @@ page.userConsults={
         }
         if(e.target.matches(".more")){
             var id=e.target.closest(".lineConsult").dataset.id;
-            AJAX.post("/PROGECT/Consults/getDetails",{id:id}, this.gettingDetails.bind(this))
+            this.gettingDetails(id)
         }
     },
     deleteConsult:function (id) {
         AJAX.post("/PROGECT/Consults/deleteConsult",{id:id},this.update.bind(this));
     },
-    gettingDetails:function (data) {
+    gettingDetails:function (id) {
         this.hide();
-        page.consultInfo.show();
-        page.consultInfo.openInfo();
+        page.consultInfo.show(id);
     }
 
 };
 page.consultInfo={
     init:function () {
         this.container=document.querySelector(".containerConsultInfo");
-        this.lineName=this.container.querySelector("line_nameConsult");
-        this.containerVisitors=this.container.querySelector("containerVisitors");
+        this.lineName=this.container.querySelector(".line_nameConsult");
+        this.containerVisitors=this.container.querySelector(".containerVisitors");
+        this.btn=this.container.querySelector(".btnAdd");
+        this.bindEvent();
     },
-    show:function () {
+    bindEvent:function () {
+        this.btn.addEventListener("click",this.hide.bind(this));
+    },
+    show:function (id) {
+        this.toOpenInfo(id);
         this.container.style.display="block";
     },
     hide:function () {
         this.container.style.display="none";
     },
-    openInfo:function (data) {
-        console.log(data);
+    toOpenInfo:function (id) {
+        AJAX.post("/PROGECT/Consults/getDetails",{id:id},this.openedInfo.bind(this));
+    },
+    openedInfo:function (data) {
+        this.lineName.innerHTML="";
+        var consult=JSON.parse(data);
+        var name=consult["name"].split("_");
+        var nameDate=document.createElement("p");
+        nameDate.setAttribute("class","nameConsult");
+        nameDate.innerText=name[0];
+        var nameTime=document.createElement("p");
+        nameTime.setAttribute("class","nameConsult");
+        nameTime.innerText=name[1];
+        this.lineName.appendChild(nameDate);
+        this.lineName.appendChild(nameTime);
+        this.loadVisitors(consult["id"]);
+    },
+    loadVisitors:function (id) {
+        AJAX.post("/PROGECT/Consults/getAllConsultVisitors",{consult_id:id},this.onLoadedVisitors.bind(this));
+    },
+    onLoadedVisitors:function (data) {
+        var students=JSON.parse(data);
+        this.containerVisitors.innerHTML="";
+        students.forEach(function (student) {
+            var lineVisitor=document.createElement("div");
+            lineVisitor.className="lineInfo";
+            var p=document.createElement("p");
+            p.className="visitor";
+            var spanSurname=document.createElement("span");
+            spanSurname.innerText=" "+student["surname"];
+            var spanName=document.createElement("span");
+            spanName.innerText=student["name"];
+            p.appendChild(spanName);
+            p.appendChild(spanSurname);
+            var group=document.createElement("p");
+            group.className="grupp";
+            group.innerText=student["group_name"];
+            lineVisitor.appendChild(p);
+            lineVisitor.appendChild(group);
+            this.containerVisitors.appendChild(lineVisitor)
+        }.bind(this));
     }
 
 };

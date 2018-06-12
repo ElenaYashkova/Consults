@@ -43,17 +43,18 @@
             </div>
             <div class="containerConsultInfo">
                 <div class="line_nameConsult">
-                    <p class="nameConsult">12.06.2018</p>
-                    <p class="nameConsult">18:29</p>
+<!--                    <p class="nameConsult">12.06.2018</p>-->
+<!--                    <p class="nameConsult">18:29</p>-->
                 </div>
+                <h3>List of Students</h3>
                 <div class="containerVisitors">
-                    <div class="lineInfo">
-                        <p class="visitor">
-                            <span>Sonya</span>
-                            <span> Sotnick</span>
-                        </p>
-                        <p class="grupp">EKO-15</p>
-                    </div>
+<!--                    <div class="lineInfo">-->
+<!--                        <p class="visitor">-->
+<!--                            <span>Sonya</span>-->
+<!--                            <span> Sotnick</span>-->
+<!--                        </p>-->
+<!--                        <p class="grupp">EKO-15</p>-->
+<!--                    </div>-->
                 </div>
                 <p class="btnAdd">Close</p>
             </div>

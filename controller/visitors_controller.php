@@ -40,8 +40,6 @@ function action_addNewVisitor(){
             model_visitors_add(@$_POST["consult_id"],@$_POST["student_id"]);
             echo "yes";
         }
-
-
     }
 }
 

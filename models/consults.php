@@ -41,10 +41,12 @@ function model_consults_close($id){
 
 function model_consults_getById($id){
     $consults=model_consults_getAll();
-    return array_shift(array_filter($consults, function ($consult) use ($id){
-        return $consult["id"]==$id;
-    }));
-}
+    foreach ($consults as $consult){
+        if($consult["id"]===$id) return $consult;
+    }
+    return Null;
+};
+
 function model_consults_deleteById($id){
     $consults=model_consults_getAll();
     $arr=[];
