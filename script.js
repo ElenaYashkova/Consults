@@ -28,27 +28,34 @@ var AJAX={
 
 var page ={
     init:function () {
-       // this.formGrupp.init();
-       // this.formStudent.init();
-       // this.formVisitor.init();
-       // this.addConsult.init();
-        this.mainMenu.init()
+        this.formGrupp.init();
+        this.formStudent.init();
+        this.formVisitor.init();
+        this.addConsult.init();
+        this.mainMenu.init();
+        this.userConsults.init();
+        this.consultInfo.init();
     }
 };
 page.mainMenu={
     init:function () {
         this.container=document.querySelector(".containerMenu");
         this.btnAddConsult=this.container.querySelector("#addConsult");
+        this.btnListConsults=this.container.querySelector("#consultList");
         this.bindEvent();
 
     },
     bindEvent:function () {
-        this.btnAddConsult.addEventListener("click", this.onAddConsultClick.bind(this));
+        this.btnAddConsult.addEventListener("click", this.onClickAddConsult.bind(this));
+        this.btnListConsults.addEventListener("click",this.onClickListConsults.bind(this));
     },
-    onAddConsultClick:function () {
-        page.addConsult.init();
+    onClickAddConsult:function () {
         page.addConsult.show();
-
+        page.userConsults.hide();
+    },
+    onClickListConsults:function () {
+        page.userConsults.show();
+        page.addConsult.hide();
     }
 
 };
@@ -69,7 +76,7 @@ page.addConsult={
         this.btnClose.addEventListener("click",this.closeConsult.bind(this));
     },
     showFormVisitor:function () {
-        page.formVisitor.init();
+        // page.formVisitor.init();
         page.formVisitor.show();
         page.formVisitor.btnAdd.setAttribute("data-class",this.container.getAttribute("data-class"));
 
@@ -103,33 +110,40 @@ page.addConsult={
     },
     onLoadedVisitors:function (data) {
         var students=JSON.parse(data);
-
         this.containerVisitors.innerHTML="";
-        students.forEach(function (student) {
-            var lineVisitor=document.createElement("div");
-            lineVisitor.className="lineVisitor";
-            lineVisitor.setAttribute("data-class",student["id"]);
+        if(students.length==0){
+            var deco=document.createElement("div");
+            deco.className="decoWait";
+            this.containerVisitors.appendChild(deco);
+            deco.style.display="block";
+        }else{
+            students.forEach(function (student) {
+                var lineVisitor=document.createElement("div");
+                lineVisitor.className="lineVisitor";
+                lineVisitor.setAttribute("data-class",student["id"]);
 
-            var p=document.createElement("p");
-            p.className="visitor";
-            var spanSurname=document.createElement("span");
-            spanSurname.innerText=" "+student["surname"];
-            var spanName=document.createElement("span");
-            spanName.innerText=student["name"];
-            p.appendChild(spanName);
-            p.appendChild(spanSurname);
+                var p=document.createElement("p");
+                p.className="visitor";
+                var spanSurname=document.createElement("span");
+                spanSurname.innerText=" "+student["surname"];
+                var spanName=document.createElement("span");
+                spanName.innerText=student["name"];
+                p.appendChild(spanName);
+                p.appendChild(spanSurname);
 
-            var group=document.createElement("p");
-            group.className="grupp";
-            group.innerText=student["group_name"];
+                var group=document.createElement("p");
+                group.className="grupp";
+                group.innerText=student["group_name"];
 
-            var btn=document.createElement("div");
-            btn.className="btnDelVisitor";
-            lineVisitor.appendChild(p);
-            lineVisitor.appendChild(group);
-            lineVisitor.appendChild(btn);
-            this.containerVisitors.appendChild(lineVisitor)
-        }.bind(this));
+                var btn=document.createElement("div");
+                btn.className="btnDelVisitor";
+                lineVisitor.appendChild(p);
+                lineVisitor.appendChild(group);
+                lineVisitor.appendChild(btn);
+                this.containerVisitors.appendChild(lineVisitor)
+            }.bind(this));
+        }
+
     },
     deleteVisitor:function (e) {
         if(e.target.matches(".btnDelVisitor")){
@@ -149,10 +163,6 @@ page.addConsult={
         var id=this.container.getAttribute("data-class");
         AJAX.post("/PROGECT/Consults/closeConsult", {id:id});
     }
-
-
-
-
 };
 
 
@@ -165,7 +175,7 @@ page.formVisitor={
         this.groupSelect=this.container.querySelector(".grVisitior");
         this.studentSelect=this.container.querySelector("#nameVisitor");
         this.bindEvent();
-        this.loadGroups();
+
         
     },
     bindEvent:function () {
@@ -178,10 +188,11 @@ page.formVisitor={
         this.container.style.display="none";
     },
     show:function () {
+        this.loadGroups();
         this.container.style.display="block";
     },
     showFormStudent:function () {
-        page.formStudent.init();
+        // page.formStudent.init();
         page.formStudent.show();
     },
     loadStudents:function () {
@@ -230,12 +241,14 @@ page.formVisitor={
         AJAX.post("/PROGECT/Consults/addNewVisitor", {student_id:student, consult_id:consult}, this.onAddedVisitor.bind(this))
     },
     onAddedVisitor:function (response) {
-        // console.log(response);
         if(response==="yes"){
             page.addConsult.loadVisitors();
             this.hide();
+        }
+        if(response==="exist") {
+            alert ("this visitor exist");
+            this.hide();
         }else{
-            // alert ("Поле имени студента не может быть пустым");
             this.hide();
         }
     }
@@ -255,7 +268,6 @@ page.formStudent={
         this.inputName=this.container.querySelector("#F_name");
         this.inputSurname=this.container.querySelector("#L_name");
         this.bindEvent();
-        this.loadGroups();
 
     },
     bindEvent:function () {
@@ -268,9 +280,9 @@ page.formStudent={
     },
     show:function () {
         this.container.style.display="block";
+        this.loadGroups();
     },
     showFormGrupp:function () {
-        page.formGrupp.init();
         page.formGrupp.show();
     },
     loadGroups:function () {
@@ -338,8 +350,86 @@ page.formGrupp={
         }
     }
 };
+page.userConsults={
+    init:function () {
+        this.container=document.querySelector(".containerUserConsults");
+        this.consultsBlock=this.container.querySelector(".wrapConsults");
+        this.bindEvent();
+    },
+    bindEvent:function (){
+        this.consultsBlock.addEventListener("click", this.chooseEvent.bind(this));
+    },
+    show:function () {
+        this.container.style.display="block";
+        this.update();
+    },
+    hide:function () {
+        this.container.style.display="none";
+    },
+    update:function () {
+        AJAX.get("/PROGECT/Consults/getAllByUser", this.loadConsults.bind(this));
+    },
+    loadConsults:function (data) {
+        var consults=JSON.parse(data);
+        this.consultsBlock.innerHTML="";
+        consults.forEach(function (consult) {
+            var lineConsult=document.createElement("div");
+            lineConsult.className="lineConsult";
+            lineConsult.setAttribute("data-id", consult["id"]);
+            var name=document.createElement("p");
+            name.className="nameConsult";
+            name.innerText=consult["name"];
+            var wrapBtn=document.createElement("div");
+            wrapBtn.className="wrapBtn";
+            var del=document.createElement("div");
+            del.className="del";
+            var more=document.createElement("div");
+            more.className="more";
+            wrapBtn.appendChild(del);
+            wrapBtn.appendChild(more);
+            lineConsult.appendChild(name);
+            lineConsult.appendChild(wrapBtn);
+            this.consultsBlock.appendChild(lineConsult);
+        }.bind(this));
 
+    },
+    chooseEvent:function (e) {
+        if(e.target.matches(".del")){
+            var id=e.target.closest(".lineConsult").dataset.id;
+            this.deleteConsult(id);
+        }
+        if(e.target.matches(".more")){
+            var id=e.target.closest(".lineConsult").dataset.id;
+            AJAX.post("/PROGECT/Consults/getDetails",{id:id}, this.gettingDetails.bind(this))
+        }
+    },
+    deleteConsult:function (id) {
+        AJAX.post("/PROGECT/Consults/deleteConsult",{id:id},this.update.bind(this));
+    },
+    gettingDetails:function (data) {
+        this.hide();
+        page.consultInfo.show();
+        page.consultInfo.openInfo();
+    }
 
+};
+page.consultInfo={
+    init:function () {
+        this.container=document.querySelector(".containerConsultInfo");
+        this.lineName=this.container.querySelector("line_nameConsult");
+        this.containerVisitors=this.container.querySelector("containerVisitors");
+    },
+    show:function () {
+        this.container.style.display="block";
+    },
+    hide:function () {
+        this.container.style.display="none";
+    },
+    openInfo:function (data) {
+        console.log(data);
+    }
+
+};
 
 window.addEventListener("load", page.init.bind(page));
 

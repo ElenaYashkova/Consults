@@ -49,7 +49,7 @@ function model_consults_deleteById($id){
     $consults=model_consults_getAll();
     $arr=[];
     foreach ($consults as $consult){
-        if(!$consult["id"]==$id) $arr[]=$consult;
+        if($consult["id"]!==$id) $arr[]=$consult;
     }
     core_saveArrayToFile("consults",$arr);
 }

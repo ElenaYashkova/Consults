@@ -34,7 +34,7 @@ function action_addNewVisitor(){
         return;
     }else{
         if(model_visitors_notExist(@$_POST["consult_id"],@$_POST["student_id"])===false){
-            echo "this visitor exist";
+            echo "exist";
             return;
         }else{
             model_visitors_add(@$_POST["consult_id"],@$_POST["student_id"]);

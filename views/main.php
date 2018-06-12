@@ -24,9 +24,39 @@
             <form action="" id="addNewConsult" method="post" enctype="multipart/form-data">
                 <div class="line_nameConsult"></div>
                 <div class="btnAdd btnVisitor">Add New Visitor</div>
-                <div class="containerVisitors"></div>
+                <div class="containerVisitors">
+                    <div class="decoWait"></div>
+                </div>
                 <input type="submit" value="Create" class="btnAdd" id="addFormConsult">
             </form>
+            <div class="containerUserConsults">
+                <h3>All user <?=auth_getCurrentUser()["login"]?> consults</h3>
+                <div class="wrapConsults">
+                    <div class="lineConsult">
+                        <p class="nameConsult">Date</p>
+                        <div class="wrapBtn">
+                            <div class="del">del</div>
+                            <div class="more">more</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="containerConsultInfo">
+                <div class="line_nameConsult">
+                    <p class="nameConsult">12.06.2018</p>
+                    <p class="nameConsult">18:29</p>
+                </div>
+                <div class="containerVisitors">
+                    <div class="lineInfo">
+                        <p class="visitor">
+                            <span>Sonya</span>
+                            <span> Sotnick</span>
+                        </p>
+                        <p class="grupp">EKO-15</p>
+                    </div>
+                </div>
+                <p class="btnAdd">Close</p>
+            </div>
         </div>
     </div>
 </div>

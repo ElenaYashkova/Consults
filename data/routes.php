@@ -12,6 +12,9 @@ return [
 
         "openConsult"=>"consults@openConsult",
         "closeConsult"=>"consults@closeConsult",
+        "getAllByUser"=>"consults@getAllByUser",
+        "deleteConsult"=>"consults@deleteConsult",
+        "getDetails"=>"consults@getDetails",
 
         "addNewVisitor"=>"visitors@addNewVisitor",
         "getAllConsultVisitors"=>"visitors@getAllConsultVisitors",
