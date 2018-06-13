@@ -5,7 +5,7 @@
     <div class="containerMenu">
         <div class="contUser">
             <div class="userImg"></div>
-            <p class="userName"><?=auth_getCurrentUser()["login"]?></p>
+            <p class="userName"><?=auth_getCurrentUser()["name"]?> <?=auth_getCurrentUser()["surname"]?></p>
             <div class="btnSetting">Setting</div>
         </div>
         <ul class="mainMenu">

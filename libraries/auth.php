@@ -15,33 +15,21 @@ function _auth_getUserById($id){
     return NULL;
 }
 
-function auth_register($login, $pass, $mail){
+function auth_register($login, $name, $surname, $pass, $mail){
     $users = _auth_getUsersArray();
-    foreach ($users as $user)
-        if ($user["login"] == $login) return false;
-
     $users[] = [
         "id" =>time().rand(0,9999999),
         "login" => $login,
+        "name" => $name,
+        "surname" => $surname,
         "pass" => md5($pass),
-        "mail" => $mail
+        "mail" => $mail,
+        "image" => "images/usericon.png"
     ];
-
     _auth_saveUsersArray($users);
-    return true;
 }
 
-function auth_login($login,$pass){
-    $users = _auth_getUsersArray();
-    $current_user = NULL;
-    foreach ($users as $user)
-        if ($user["login"] == $login) {
-            $current_user = $user;
-            break;
-        }
-    if ($current_user === NULL) return false;
-    if($current_user["pass"]!==md5($pass)) return false;
-
+function auth_login($current_user){
     $_SESSION["user_id"] = $current_user["id"];
     $_SESSION["user_ip"] = md5($_SERVER["REMOTE_ADDR"]);
     $_SESSION["user_agent"] = md5($_SERVER["HTTP_USER_AGENT"]);
