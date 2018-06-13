@@ -51,8 +51,8 @@ page.mainMenu={
     },
     onClickAddConsult:function () {
         page.addConsult.show();
-        page.userConsults.hide();
         page.consultInfo.hide();
+        page.userConsults.hide();
     },
     onClickListConsults:function () {
         page.userConsults.show();
@@ -67,7 +67,6 @@ page.addConsult={
         this.btnAddVisitor=this.container.querySelector(".btnVisitor");
         this.containerVisitors=this.container.querySelector(".containerVisitors");
         this.lineName=this.container.querySelector(".line_nameConsult");
-        this.btnDelVisitor=this.container.querySelector(".del");
         this.btnClose=this.container.querySelector("#addFormConsult");
         this.bindEvent();
         this.toOpenConsult();
@@ -172,6 +171,7 @@ page.formVisitor={
         this.btnAdd=this.container.querySelector("#addVis");
         this.groupSelect=this.container.querySelector(".grVisitior");
         this.studentSelect=this.container.querySelector("#nameVisitor");
+        this.shadow=document.querySelector("#newVisit");
         this.bindEvent();
 
         
@@ -184,13 +184,14 @@ page.formVisitor={
     },
     hide:function () {
         this.container.style.display="none";
+        this.shadow.style.display="none";
     },
     show:function () {
         this.loadGroups();
         this.container.style.display="block";
+        this.shadow.style.display="block";
     },
     showFormStudent:function () {
-        // page.formStudent.init();
         page.formStudent.show();
     },
     loadStudents:function () {
@@ -265,6 +266,7 @@ page.formStudent={
         this.groupSelect=this.container.querySelector(".grVisitior");
         this.inputName=this.container.querySelector("#F_name");
         this.inputSurname=this.container.querySelector("#L_name");
+        this.shadow=document.querySelector("#newStudent");
         this.bindEvent();
 
     },
@@ -275,9 +277,11 @@ page.formStudent={
     },
     hide:function () {
         this.container.style.display="none";
+        this.shadow.style.display="none";
     },
     show:function () {
         this.container.style.display="block";
+        this.shadow.style.display="block";
         this.loadGroups();
     },
     showFormGrupp:function () {
@@ -321,6 +325,7 @@ page.formGrupp={
         this.btnBack=this.container.querySelector(".btnCans");
         this.inputName=this.container.querySelector("#groupName");
         this.btnAdd=this.container.querySelector("#addGrup");
+        this.shadow=document.querySelector("#newGrupp");
         this.bindEvent();
     },
     bindEvent:function () {
@@ -330,9 +335,11 @@ page.formGrupp={
     },
     hide:function () {
         this.container.style.display="none";
+        this.shadow.style.display="none";
     },
     show:function () {
         this.container.style.display="block";
+        this.shadow.style.display="block";
     },
     addGroup:function () {
         var name=this.inputName.value;
@@ -427,6 +434,7 @@ page.consultInfo={
     },
     hide:function () {
         this.container.style.display="none";
+        page.userConsults.show();
     },
     toOpenInfo:function (id) {
         AJAX.post("/PROGECT/Consults/getDetails",{id:id},this.openedInfo.bind(this));

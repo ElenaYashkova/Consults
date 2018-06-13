@@ -1,3 +1,5 @@
+<script src="script/login.js"></script>
+
 <div class="ContainerAuthoriz Auth">
     <h2>User Login</h2>
     <form action="login" class="Authoriz" method="post" enctype="multipart/form-data">

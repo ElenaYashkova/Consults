@@ -1,4 +1,5 @@
-<script type="text/javascript" src="/PROGECT/Consults/script.js"></script>
+<script type="text/javascript" src="/PROGECT/Consults/script/script.js"></script>
+
 
 <div class="mainContainer">
     <div class="containerMenu">
@@ -24,13 +25,11 @@
             <form action="" id="addNewConsult" method="post" enctype="multipart/form-data">
                 <div class="line_nameConsult"></div>
                 <div class="btnAdd btnVisitor">Add New Visitor</div>
-                <div class="containerVisitors">
-                    <div class="decoWait"></div>
-                </div>
+                <div class="containerVisitors"></div>
                 <input type="submit" value="Create" class="btnAdd" id="addFormConsult">
             </form>
             <div class="containerUserConsults">
-                <h3>All user <?=auth_getCurrentUser()["login"]?> consults</h3>
+                <h3>All consults by user <?=auth_getCurrentUser()["login"]?> </h3>
                 <div class="wrapConsults">
                     <div class="lineConsult">
                         <p class="nameConsult">Date</p>
@@ -42,95 +41,81 @@
                 </div>
             </div>
             <div class="containerConsultInfo">
-                <div class="line_nameConsult">
-<!--                    <p class="nameConsult">12.06.2018</p>-->
-<!--                    <p class="nameConsult">18:29</p>-->
-                </div>
+                <div class="line_nameConsult"></div>
                 <h3>List of Students</h3>
-                <div class="containerVisitors">
-<!--                    <div class="lineInfo">-->
-<!--                        <p class="visitor">-->
-<!--                            <span>Sonya</span>-->
-<!--                            <span> Sotnick</span>-->
-<!--                        </p>-->
-<!--                        <p class="grupp">EKO-15</p>-->
-<!--                    </div>-->
-                </div>
+                <div class="containerVisitors"></div>
                 <p class="btnAdd">Close</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container_form  newVisit">
-    <h2>Add New Visitor</h2>
-    <div class="btn addStudent"><span class="btnAdd">Add New Student</span></div>
-    <div class="wrap">
-        <div class="formLine">
-            <select name="group" class="grVisitior" label="grupp" disabled>
-                <option value="1528139014236">EKO-15</option>
-                <option value="1528140453386">TR</option>
-            </select>
-        </div>
-        <div class="formLine">
-            <select name="student" id="nameVisitor" disabled>
-                <option value="1528147490_1819">Sonya Sotnick</option>
-                <option value="1528193162_49">Toma Sotnick</option>
-            </select>
-        </div>
-        <div class="lineBtn">
-            <div class="btn">
-                <div class="btnCans"><span class="btnAdd">Back</span></div>
+<div class="shadow" id="newVisit" >
+    <div class="container_form  newVisit">
+        <h2>Add New Visitor</h2>
+        <div class="btn addStudent"><span class="btnAdd">Add New Student</span></div>
+        <div class="wrap">
+            <div class="formLine">
+                <select name="group" class="grVisitior" label="grupp" disabled></select>
             </div>
-            <div class="btn">
-                <input type="submit" value="OK" id="addVis">
+            <div class="formLine">
+                <select name="student" id="nameVisitor" disabled></select>
+            </div>
+            <div class="lineBtn">
+                <div class="btn">
+                    <div class="btnCans"><span class="btnAdd">Close</span></div>
+                </div>
+                <div class="btn">
+                    <input type="submit" value="OK" id="addVis">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="shadow" id="newStudent">
+    <div class="container_form  newStudent">
+        <h2>Create New Student</h2>
+        <div class="btn addGrupp"><span class="btnAdd">Add New Grupp</span></div>
+        <div class="wrap">
+            <div class="formLine">
+                <select name="group" class="grVisitior" label="grupp" disabled></select>
+            </div>
+            <div class="formLine">
+                <input type="text" name="name" placeholder="First name" id="F_name">
+            </div>
+            <div class="formLine">
+                <input type="text" name="surname" placeholder="Last name" id="L_name">
+            </div>
+            <div class="lineBtn">
+                <div class="btn">
+                    <div class="btnCans"><span class="btnAdd">Close</span></div>
+                </div>
+                <div class="btn">
+                    <input type="submit" value="OK" id="addStud">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="shadow" id="newGrupp">
+    <div class="container_form  newGrupp">
+        <h2>Create New Grupp</h2>
+        <div class="wrap">
+            <div class="formLine">
+                <input type="text" name="grupName" placeholder="Name grupp" id="groupName">
+            </div>
+            <div class="lineBtn">
+                <div class="btn">
+                    <div class="btnCans"><span class="btnAdd">Close</span></div>
+                </div>
+                <div class="btn">
+                    <input type="submit" value="OK" id="addGrup">
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-<div class="container_form  newStudent">
-    <h2>Create New Student</h2>
-    <div class="btn addGrupp"><span class="btnAdd">Add New Grupp</span></div>
-    <div class="wrap">
-        <div class="formLine">
-            <select name="group" class="grVisitior" label="grupp" disabled>
-<!--                <option value="1528139014236">EKO-15</option>-->
-<!--                <option value="1528140453386">TR</option>-->
-            </select>
-        </div>
-        <div class="formLine">
-            <input type="text" name="name" placeholder="First name" id="F_name">
-        </div>
-        <div class="formLine">
-            <input type="text" name="surname" placeholder="Last name" id="L_name">
-        </div>
-        <div class="lineBtn">
-            <div class="btn">
-                <div class="btnCans"><span class="btnAdd">Back</span></div>
-            </div>
-            <div class="btn">
-                <input type="submit" value="OK" id="addStud">
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<div class="container_form  newGrupp">
-    <h2>Create New Grupp</h2>
-    <div class="wrap">
-        <div class="formLine">
-            <input type="text" name="grupName" placeholder="Name grupp" id="groupName">
-        </div>
-        <div class="lineBtn">
-            <div class="btn">
-                <div class="btnCans"><span class="btnAdd">Back</span></div>
-            </div>
-            <div class="btn">
-                <input type="submit" value="OK" id="addGrup">
-            </div>
-        </div>
-    </div>
-</div>
