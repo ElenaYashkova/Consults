@@ -22,31 +22,42 @@
     <div class="containerContent">
         <div class="listContent">
             <form action="" id="addNewConsult" method="post" enctype="multipart/form-data">
-                <div class="line_nameConsult">
-<!--                    <p class="nameConsult">22.05.2018</p>-->
-<!--                    <p class="nameConsult">12.30</p>-->
-                </div>
+                <div class="line_nameConsult"></div>
                 <div class="btnAdd btnVisitor">Add New Visitor</div>
                 <div class="containerVisitors">
-                    <div class="lineVisitor">
-                        <p class="visitor">
-                            <span >Vasiliy</span>
-                            <span >Ivanov</span>
-                        </p>
-                        <p class="grupp">Eko-16</p>
-                        <div class="btnDelVisitor">X</div>
-                    </div>
-                    <div class="lineVisitor">
-                        <p class="visitor">
-                            <span >Vasiliy</span>
-                            <span >Ivanov</span>
-                        </p>
-                        <p class="grupp">Eko-16</p>
-                        <div class="btnDelVisitor">X</div>
-                    </div>
+                    <div class="decoWait"></div>
                 </div>
                 <input type="submit" value="Create" class="btnAdd" id="addFormConsult">
             </form>
+            <div class="containerUserConsults">
+                <h3>All user <?=auth_getCurrentUser()["login"]?> consults</h3>
+                <div class="wrapConsults">
+                    <div class="lineConsult">
+                        <p class="nameConsult">Date</p>
+                        <div class="wrapBtn">
+                            <div class="del">del</div>
+                            <div class="more">more</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="containerConsultInfo">
+                <div class="line_nameConsult">
+<!--                    <p class="nameConsult">12.06.2018</p>-->
+<!--                    <p class="nameConsult">18:29</p>-->
+                </div>
+                <h3>List of Students</h3>
+                <div class="containerVisitors">
+<!--                    <div class="lineInfo">-->
+<!--                        <p class="visitor">-->
+<!--                            <span>Sonya</span>-->
+<!--                            <span> Sotnick</span>-->
+<!--                        </p>-->
+<!--                        <p class="grupp">EKO-15</p>-->
+<!--                    </div>-->
+                </div>
+                <p class="btnAdd">Close</p>
+            </div>
         </div>
     </div>
 </div>
@@ -56,13 +67,13 @@
     <div class="btn addStudent"><span class="btnAdd">Add New Student</span></div>
     <div class="wrap">
         <div class="formLine">
-            <select name="group" class="grVisitior" label="grupp">
+            <select name="group" class="grVisitior" label="grupp" disabled>
                 <option value="1528139014236">EKO-15</option>
                 <option value="1528140453386">TR</option>
             </select>
         </div>
         <div class="formLine">
-            <select name="student" id="nameVisitor" >
+            <select name="student" id="nameVisitor" disabled>
                 <option value="1528147490_1819">Sonya Sotnick</option>
                 <option value="1528193162_49">Toma Sotnick</option>
             </select>
@@ -84,16 +95,16 @@
     <div class="btn addGrupp"><span class="btnAdd">Add New Grupp</span></div>
     <div class="wrap">
         <div class="formLine">
-            <select name="group" class="grVisitior" label="grupp">
-                <option value="1528139014236">EKO-15</option>
-                <option value="1528140453386">TR</option>
+            <select name="group" class="grVisitior" label="grupp" disabled>
+<!--                <option value="1528139014236">EKO-15</option>-->
+<!--                <option value="1528140453386">TR</option>-->
             </select>
         </div>
         <div class="formLine">
-            <input type="text" name="name" placeholder="First name">
+            <input type="text" name="name" placeholder="First name" id="F_name">
         </div>
         <div class="formLine">
-            <input type="text" name="surname" placeholder="Last name">
+            <input type="text" name="surname" placeholder="Last name" id="L_name">
         </div>
         <div class="lineBtn">
             <div class="btn">
@@ -111,7 +122,7 @@
     <h2>Create New Grupp</h2>
     <div class="wrap">
         <div class="formLine">
-            <input type="text" name="grupName" placeholder="Name grupp">
+            <input type="text" name="grupName" placeholder="Name grupp" id="groupName">
         </div>
         <div class="lineBtn">
             <div class="btn">

@@ -49,22 +49,28 @@ body{width: 100%; height: 100vh; padding: 30px; background: url("../images/backg
 .line_menu:hover{background: #7979e2;}
 
 .containerContent{width: 75%; height: auto; min-height: 450px;  padding: 30px 20px}
-.listContent{width: 100%; height: 100%; padding-top: 10px; }
+.listContent{width: 100%; height: 100%; padding-top: 10px; background: url("../images/cat_sleep.png") no-repeat;
+    background-size: 50% ; background-position: center; }
+
 
 /*блок новой консультации*/
 #addNewConsult{width: 100%;height: 100%; display: none}
 .line_nameConsult{width: 100%; height: auto; display: flex; justify-content: start; margin-bottom: 10px; border-bottom: 3px solid #fff;}
 .line_nameConsult p{font-family: "Open Sans"; font-weight: bold; font-size: 24px; line-height: 24px; color: #fff;
     background: transparent;  width: 50%}
-/*.line_nameConsult p:first-child{margin-right: 30px}*/
+
 .btnAdd{ border-radius: 5px; color: #fff; text-align: center; font-size: 15px;
     font-family: "Open Sans"; font-weight: bold; line-height: 30px; cursor: pointer; }
 .btnVisitor, .addStudent{width: 115px; height: 30px; background: #7979e2;   margin-left: calc(100% - 115px); margin-bottom: 10px }
-.containerVisitors{width: 100%; height: auto; min-height: 350px; overflow-y: scroll; }
+.containerVisitors, .wrapConsults{width: 100%; height: auto; min-height: 350px; max-height: 350px; margin-bottom: 10px;overflow-y: scroll; background: #262730; }
 .containerVisitors::-webkit-scrollbar { width: 0; }
-.lineVisitor{display: flex; justify-content: space-between; margin-bottom: 10px; background: #3a3a46}
-.lineVisitor p{font-family: "Open Sans"; font-size: 18px; font-weight: lighter; color:#fff; line-height: 24px;}
-.btnDelVisitor{width: 24px; height: 24px; cursor: pointer;}
+.wrapConsults::-webkit-scrollbar { width: 0; }
+.decoWait{width: 100%; height: 350px;  background-image: url("../images/cat_laptop.png"); background-position: center;
+background-size: 50%; background-repeat: no-repeat; display: none}
+
+.lineVisitor, .lineInfo{display: flex; justify-content: space-between; margin-bottom: 10px; background: #3a3a46;padding: 0 10px;}
+.lineVisitor p, .lineInfo p{font-family: "Open Sans"; font-size: 18px; font-weight: lighter; color:#fff; line-height: 24px;}
+/*.btnDelVisitor{width: 24px; height: 24px; cursor: pointer; background:#ff5757;}*/
 #addFormConsult{width: 80px; height: 30px; background: #ff5757;   margin-left: calc(100% - 100px);}
 
 
@@ -96,3 +102,29 @@ margin-bottom: 20px; border-radius: 5px;}
 
 #resend{color:gray;}
 .userImg{background-image: url("../images/usericon.png");}
+
+.containerUserConsults{width: 100%; height: auto;  background: #262730; display: none}
+.containerUserConsults h3, .containerConsultInfo h3{font-family: "Open Sans"; font-weight: bold; font-size: 24px; line-height: 24px; color: #fff;
+    margin-bottom: 10px; text-align: center; text-transform: uppercase }
+.containerUserConsults h3{ border-bottom: 3px solid #fff;}
+
+.wrapConsults{width: 100%; height: auto; min-height: 350px; max-height: 350px; margin-bottom: 10px;overflow-y: scroll; background: #262730; }
+.wrapConsults::-webkit-scrollbar { width: 0; }
+.lineConsult{display: flex; justify-content: space-between; margin-bottom: 10px; background: #3a3a46;padding: 6px 10px;}
+.lineConsult p{font-family: "Open Sans"; font-size: 22px; font-weight: lighter; color:#fff; line-height: 24px;}
+.wrapBtn{display: flex; justify-content: space-between;}
+/*.del{width: 24px; height: 24px; cursor: pointer; margin-right: 15px; background:  #ff5757}*/
+.del{width: 24px; height: 24px; cursor: pointer; margin-right: 15px; background: url("../images/x.png") no-repeat;
+    background-size: cover; background-position: center;}
+/*.more{width: 24px; height: 24px; cursor: pointer; background: #7979e2}*/
+.more{width: 24px; height: 24px; cursor: pointer; background: url("../images/arrow-18.png") no-repeat;
+    background-size: cover; background-position: center;}
+
+.containerConsultInfo{display: none}
+.lineConsult:hover{box-shadow: 0 2px 5px 0 #fff;}
+.lineConsult:hover p{font-weight: bold}
+.lineConsult:hover .del{ background: url("../images/xRed.png") no-repeat;background-size: cover; background-position: center;}
+.lineVisitor:hover .del{ background: url("../images/xRed.png") no-repeat;background-size: cover; background-position: center;}
+.lineInfo p{width: 50%}
+.containerConsultInfo .btnAdd{width: 60px; height: auto; background:#ff5757; margin-left: calc(100% - 100px)  }
+
