@@ -11,6 +11,7 @@ return [
     "notAuth"=>[
         ""=>"auth@login_index",
         "login"=>"auth@login",
-        "reg"=>"auth@reg"
+        "reg"=>"auth@reg",
+        "mail" => "auth@mail"
     ]
 ];

@@ -75,9 +75,9 @@ page.addConsult={
     },
     toOpenConsult:function () {
         //todo ajax get consult
-        AJAX.get("/PROGECT/Consults/openConsult",this.ConsultOpened.bind(this))
+        AJAX.get("/PROGECT/Consults/openConsult",this.consultOpened.bind(this))
     },
-    ConsultOpened:function (response) {
+    consultOpened:function (response) {
         var consult=JSON.parse(response);
         var name=consult["name"].split("_");
         this.container.setAttribute("data-class", consult["id"]);

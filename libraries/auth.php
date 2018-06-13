@@ -23,7 +23,8 @@ function auth_register($login, $name, $surname, $pass, $mail){
         "name" => $name,
         "surname" => $surname,
         "pass" => md5($pass),
-        "mail" => $mail
+        "mail" => $mail,
+        "image" => "images/usericon.png"
     ];
     _auth_saveUsersArray($users);
 }
