@@ -117,7 +117,9 @@ page.addConsult={
             this.containerVisitors.appendChild(deco);
             deco.style.display="block";
         }else{
+            var number=0;
             students.forEach(function (student) {
+                number++;
                 var lineVisitor=document.createElement("div");
                 lineVisitor.className="lineVisitor";
                 lineVisitor.setAttribute("data-class",student["id"]);
@@ -127,6 +129,9 @@ page.addConsult={
                 spanSurname.innerText=" "+student["surname"];
                 var spanName=document.createElement("span");
                 spanName.innerText=student["name"];
+                var num=document.createElement("span");
+                num.innerText=number+". ";
+                p.appendChild(num);
                 p.appendChild(spanName);
                 p.appendChild(spanSurname);
                 var group=document.createElement("p");
@@ -245,7 +250,7 @@ page.formVisitor={
             this.hide();
         }
         if(response==="exist") {
-            alert ("this visitor exist");
+            // alert ("this visitor exist");
             this.hide();
         }else{
             this.hide();
@@ -458,8 +463,10 @@ page.consultInfo={
     },
     onLoadedVisitors:function (data) {
         var students=JSON.parse(data);
+        var number=0;
         this.containerVisitors.innerHTML="";
         students.forEach(function (student) {
+            number++;
             var lineVisitor=document.createElement("div");
             lineVisitor.className="lineInfo";
             var p=document.createElement("p");
@@ -468,6 +475,9 @@ page.consultInfo={
             spanSurname.innerText=" "+student["surname"];
             var spanName=document.createElement("span");
             spanName.innerText=student["name"];
+            var num=document.createElement("span");
+            num.innerHTML=number+".  ";
+            p.appendChild(num);
             p.appendChild(spanName);
             p.appendChild(spanSurname);
             var group=document.createElement("p");
