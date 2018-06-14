@@ -69,7 +69,7 @@ page.addConsult={
         this.lineName=this.container.querySelector(".line_nameConsult");
         this.btnClose=this.container.querySelector("#addFormConsult");
         this.bindEvent();
-        this.toOpenConsult();
+
     },
     bindEvent:function () {
         this.btnAddVisitor.addEventListener("click",this.showFormVisitor.bind(this));
@@ -83,6 +83,7 @@ page.addConsult={
     },
     show:function () {
         this.container.style.display="block";
+        this.toOpenConsult();
     },
     hide:function () {
         this.container.style.display="none";
@@ -371,6 +372,7 @@ page.userConsults={
     },
     show:function () {
         this.container.style.display="block";
+        // console.log("ok");
         this.update();
     },
     hide:function () {
@@ -381,6 +383,7 @@ page.userConsults={
     },
     loadConsults:function (data) {
         var consults=JSON.parse(data);
+        // console.log(data);
         this.consultsBlock.innerHTML="";
         consults.forEach(function (consult) {
             var lineConsult=document.createElement("div");
@@ -409,7 +412,9 @@ page.userConsults={
             this.deleteConsult(id);
         }
         if(e.target.matches(".more")){
+
             var id=e.target.closest(".lineConsult").dataset.id;
+            console.log(id)
             this.gettingDetails(id)
         }
     },

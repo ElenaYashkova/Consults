@@ -25,8 +25,8 @@ body{width: 100%; height: 100vh; padding: 30px; background: url("../images/backg
     background: transparent;
     font-size: 18px; font-weight: bold; text-align: center}
 .ContainerAuthoriz .lineBtn .btnLog{background: #ff5757;}
-.ContainerAuthoriz .lineBtn .btnReg{background: #7979e2;}
-.btnReg a, .btnLog a{color: #fff;}
+.ContainerAuthoriz .lineBtn .btnReg, .btnBack{background: #7979e2;}
+.btnReg a, .btnLog a, .btnBack a{color: #fff;}
 
 
 /*containerMenu*/

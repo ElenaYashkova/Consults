@@ -2,6 +2,7 @@ window.addEventListener("load", function () {
     let auth = document.querySelector(".Auth");
     let reg = document.querySelector(".Register");
     let resend = document.querySelector(".Resend");
+    let btnBack=resend.querySelector(".btnBack");
 
     let showRegBtn = document.querySelector("#showReg");
     showRegBtn.addEventListener("click",function (e) {
@@ -25,5 +26,10 @@ window.addEventListener("load", function () {
             auth.style.display = "none";
             resend.style.display = "block";
         }
+    });
+
+    btnBack.addEventListener("click",function (evt) {
+        auth.style.display = "block";
+        resend.style.display = "none";
     })
 });

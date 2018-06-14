@@ -47,7 +47,7 @@
             <div class="icon reg"></div>
         </div>
         <div class="lineBtn">
-            <div class="btnLog" class="showLogin">
+            <div class="btnLog showLogin">
                 <a href="#">LOGIN</a>
             </div>
             <div class="btnReg">
@@ -70,9 +70,9 @@
         </div>
         <div class="lineBtn">
             <div class="btnLog">
-                <input type="submit" value="SEND" id="log">
+                <input type="submit" value="SEND" id="logR">
             </div>
-            <div class="showLogin btnReg">
+            <div class="btnBack" >
                 <a href="#">BACK</a>
             </div>
         </div>
