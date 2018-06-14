@@ -29,7 +29,7 @@
                 <input type="submit" value="Create" class="btnAdd" id="addFormConsult">
             </form>
             <div class="containerUserConsults">
-                <h3>All consults by user <?=auth_getCurrentUser()["login"]?> </h3>
+                <h3>All consults by user <?=auth_getCurrentUser()["name"]." ".auth_getCurrentUser()["surname"]?>  </h3>
                 <div class="wrapConsults">
                     <div class="lineConsult">
                         <p class="nameConsult">Date</p>

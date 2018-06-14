@@ -92,6 +92,7 @@ page.addConsult={
         AJAX.get("/PROGECT/Consults/openConsult",this.consultOpened.bind(this))
     },
     consultOpened:function (response) {
+        this.lineName.innerHTML="";
         var consult=JSON.parse(response);
         var name=consult["name"].split("_");
         this.container.setAttribute("data-class", consult["id"]);
