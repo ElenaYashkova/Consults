@@ -11,7 +11,7 @@
 
 
 </head>
-<body>
+<body class="fon">
 
 <?php include $content;?>
 

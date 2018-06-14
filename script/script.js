@@ -42,12 +42,14 @@ page.mainMenu={
         this.container=document.querySelector(".containerMenu");
         this.btnAddConsult=this.container.querySelector("#addConsult");
         this.btnListConsults=this.container.querySelector("#consultList");
+        this.btnSetting=this.container.querySelector("btnSetting");
         this.bindEvent();
 
     },
     bindEvent:function () {
         this.btnAddConsult.addEventListener("click", this.onClickAddConsult.bind(this));
         this.btnListConsults.addEventListener("click",this.onClickListConsults.bind(this));
+        this.btnSetting.addEventListener("click",this.chengStyle.bind(this));
     },
     onClickAddConsult:function () {
         page.addConsult.show();
@@ -58,6 +60,9 @@ page.mainMenu={
         page.userConsults.show();
         page.addConsult.hide();
         page.consultInfo.hide();
+    },
+    chengStyle:function () {
+
     }
 
 };
