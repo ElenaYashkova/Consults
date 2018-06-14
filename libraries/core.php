@@ -69,3 +69,7 @@ function core_navigate(){
     //echo "404";
     core_render("404");
 }
+
+function core_back(){
+    header("Location:".$_SERVER["HTTP_REFERER"]);
+}

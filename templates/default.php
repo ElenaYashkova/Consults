@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/PROGECT/Consults/css/style.css">
     <script type="text/javascript" src="/PROGECT/Consults/script.js"></script>
     <title><?=$title?></title>
-    <script src="script/login.js"></script>
+    <script src="/PROGECT/Consults/script/authwindows.js"></script>
 
 </head>
 <body>

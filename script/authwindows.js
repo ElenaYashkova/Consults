@@ -10,11 +10,10 @@ window.addEventListener("load", function () {
             reg.style.display = "block";
         }
     });
-    let showLoginBtn = document.querySelector(".showLogin");
+    let showLoginBtn = document.querySelector("#showLogin");
     showLoginBtn.addEventListener("click",function (e) {
         if(e.target.tagName = "a"){
             reg.style.display = "none";
-            resend.style.display = "none";
             auth.style.display = "block";
         }
     });
@@ -25,5 +24,15 @@ window.addEventListener("load", function () {
             auth.style.display = "none";
             resend.style.display = "block";
         }
-    })
+    });
+
+    let back = document.querySelector("#back");
+    back.addEventListener("click", function (e) {
+        if(e.target.tagName = "a"){
+            auth.style.display = "block";
+            resend.style.display = "none";
+        }
+    });
 });
+
+
