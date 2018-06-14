@@ -42,22 +42,27 @@ page.mainMenu={
         this.container=document.querySelector(".containerMenu");
         this.btnAddConsult=this.container.querySelector("#addConsult");
         this.btnListConsults=this.container.querySelector("#consultList");
+        this.btnSetting=this.container.querySelector("btnSetting");
         this.bindEvent();
 
     },
     bindEvent:function () {
         this.btnAddConsult.addEventListener("click", this.onClickAddConsult.bind(this));
         this.btnListConsults.addEventListener("click",this.onClickListConsults.bind(this));
+        this.btnSetting.addEventListener("click",this.chengStyle.bind(this));
     },
     onClickAddConsult:function () {
         page.addConsult.show();
-        page.userConsults.hide();
         page.consultInfo.hide();
+        page.userConsults.hide();
     },
     onClickListConsults:function () {
         page.userConsults.show();
         page.addConsult.hide();
         page.consultInfo.hide();
+    },
+    chengStyle:function () {
+
     }
 
 };
@@ -67,10 +72,9 @@ page.addConsult={
         this.btnAddVisitor=this.container.querySelector(".btnVisitor");
         this.containerVisitors=this.container.querySelector(".containerVisitors");
         this.lineName=this.container.querySelector(".line_nameConsult");
-        this.btnDelVisitor=this.container.querySelector(".del");
         this.btnClose=this.container.querySelector("#addFormConsult");
         this.bindEvent();
-        this.toOpenConsult();
+
     },
     bindEvent:function () {
         this.btnAddVisitor.addEventListener("click",this.showFormVisitor.bind(this));
@@ -84,6 +88,7 @@ page.addConsult={
     },
     show:function () {
         this.container.style.display="block";
+        this.toOpenConsult();
     },
     hide:function () {
         this.container.style.display="none";
@@ -92,6 +97,7 @@ page.addConsult={
         AJAX.get("/PROGECT/Consults/openConsult",this.consultOpened.bind(this))
     },
     consultOpened:function (response) {
+        this.lineName.innerHTML="";
         var consult=JSON.parse(response);
         var name=consult["name"].split("_");
         this.container.setAttribute("data-class", consult["id"]);
@@ -118,7 +124,9 @@ page.addConsult={
             this.containerVisitors.appendChild(deco);
             deco.style.display="block";
         }else{
+            var number=0;
             students.forEach(function (student) {
+                number++;
                 var lineVisitor=document.createElement("div");
                 lineVisitor.className="lineVisitor";
                 lineVisitor.setAttribute("data-class",student["id"]);
@@ -128,6 +136,9 @@ page.addConsult={
                 spanSurname.innerText=" "+student["surname"];
                 var spanName=document.createElement("span");
                 spanName.innerText=student["name"];
+                var num=document.createElement("span");
+                num.innerText=number+". ";
+                p.appendChild(num);
                 p.appendChild(spanName);
                 p.appendChild(spanSurname);
                 var group=document.createElement("p");
@@ -172,6 +183,7 @@ page.formVisitor={
         this.btnAdd=this.container.querySelector("#addVis");
         this.groupSelect=this.container.querySelector(".grVisitior");
         this.studentSelect=this.container.querySelector("#nameVisitor");
+        this.shadow=document.querySelector("#newVisit");
         this.bindEvent();
 
         
@@ -184,13 +196,14 @@ page.formVisitor={
     },
     hide:function () {
         this.container.style.display="none";
+        this.shadow.style.display="none";
     },
     show:function () {
         this.loadGroups();
         this.container.style.display="block";
+        this.shadow.style.display="block";
     },
     showFormStudent:function () {
-        // page.formStudent.init();
         page.formStudent.show();
     },
     loadStudents:function () {
@@ -244,7 +257,7 @@ page.formVisitor={
             this.hide();
         }
         if(response==="exist") {
-            alert ("this visitor exist");
+            // alert ("this visitor exist");
             this.hide();
         }else{
             this.hide();
@@ -265,6 +278,7 @@ page.formStudent={
         this.groupSelect=this.container.querySelector(".grVisitior");
         this.inputName=this.container.querySelector("#F_name");
         this.inputSurname=this.container.querySelector("#L_name");
+        this.shadow=document.querySelector("#newStudent");
         this.bindEvent();
 
     },
@@ -275,9 +289,11 @@ page.formStudent={
     },
     hide:function () {
         this.container.style.display="none";
+        this.shadow.style.display="none";
     },
     show:function () {
         this.container.style.display="block";
+        this.shadow.style.display="block";
         this.loadGroups();
     },
     showFormGrupp:function () {
@@ -321,6 +337,7 @@ page.formGrupp={
         this.btnBack=this.container.querySelector(".btnCans");
         this.inputName=this.container.querySelector("#groupName");
         this.btnAdd=this.container.querySelector("#addGrup");
+        this.shadow=document.querySelector("#newGrupp");
         this.bindEvent();
     },
     bindEvent:function () {
@@ -330,9 +347,11 @@ page.formGrupp={
     },
     hide:function () {
         this.container.style.display="none";
+        this.shadow.style.display="none";
     },
     show:function () {
         this.container.style.display="block";
+        this.shadow.style.display="block";
     },
     addGroup:function () {
         var name=this.inputName.value;
@@ -359,6 +378,7 @@ page.userConsults={
     },
     show:function () {
         this.container.style.display="block";
+        // console.log("ok");
         this.update();
     },
     hide:function () {
@@ -369,6 +389,7 @@ page.userConsults={
     },
     loadConsults:function (data) {
         var consults=JSON.parse(data);
+        // console.log(data);
         this.consultsBlock.innerHTML="";
         consults.forEach(function (consult) {
             var lineConsult=document.createElement("div");
@@ -397,7 +418,9 @@ page.userConsults={
             this.deleteConsult(id);
         }
         if(e.target.matches(".more")){
+
             var id=e.target.closest(".lineConsult").dataset.id;
+            console.log(id)
             this.gettingDetails(id)
         }
     },
@@ -427,6 +450,7 @@ page.consultInfo={
     },
     hide:function () {
         this.container.style.display="none";
+        page.userConsults.show();
     },
     toOpenInfo:function (id) {
         AJAX.post("/PROGECT/Consults/getDetails",{id:id},this.openedInfo.bind(this));
@@ -450,8 +474,10 @@ page.consultInfo={
     },
     onLoadedVisitors:function (data) {
         var students=JSON.parse(data);
+        var number=0;
         this.containerVisitors.innerHTML="";
         students.forEach(function (student) {
+            number++;
             var lineVisitor=document.createElement("div");
             lineVisitor.className="lineInfo";
             var p=document.createElement("p");
@@ -460,6 +486,9 @@ page.consultInfo={
             spanSurname.innerText=" "+student["surname"];
             var spanName=document.createElement("span");
             spanName.innerText=student["name"];
+            var num=document.createElement("span");
+            num.innerHTML=number+".  ";
+            p.appendChild(num);
             p.appendChild(spanName);
             p.appendChild(spanSurname);
             var group=document.createElement("p");

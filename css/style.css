@@ -1,14 +1,16 @@
 /* CSS Document */
 *, html, body{margin:0; padding:0; list-style: none; outline: none; text-decoration: none; box-sizing: border-box; border: none}
 
-body{width: 100%; height: 100vh; padding: 30px; background: url("../images/background.png") no-repeat;
+.fon{width: 100%; height: 100vh; padding: 30px; background: url("../images/background.png") no-repeat;
     background-size: cover; background-position: center;}
 /*блок авторизации*/
 .ContainerAuthoriz{width: 420px; height: auto;  background: #262730; position: absolute;
     top:50%; left: 50%; margin-top: -190px; margin-left: -210px; padding: 0 20px;}
 /*.Auth{display: none}*/
 .Resend{display: none;}
-.Register{display: none;}
+.Register{display: none; margin-top: -290px;}
+
+
 .ContainerAuthoriz h2, .container_form h2{font-family: "Open Sans"; font-size: 22px; color: #fff; line-height: 100px; font-weight: lighter;}
 .ContainerAuthoriz .formLine{width: 100%; height: 45px; background: #3a3a46; padding: 15px; display: flex; justify-content: space-between;
     margin-bottom: 20px; border-radius: 5px;}
@@ -20,26 +22,28 @@ body{width: 100%; height: 100vh; padding: 30px; background: url("../images/backg
 .ContainerAuthoriz .lineBtn{display: flex; justify-content: space-between; padding: 35px 0;}
 .ContainerAuthoriz .lineBtn div{width: 165px; height: 50px; border-radius: 5px; color: #fff; text-align: center; font-size: 18px;
     font-family: "Open Sans"; font-weight: bold; line-height: 50px; cursor: pointer;}
-#log, #reg{ width: 100%;
+#log, #reg, #logR{ width: 100%;
     color: #fff;
     background: transparent;
     font-size: 18px; font-weight: bold; text-align: center}
 .ContainerAuthoriz .lineBtn .btnLog{background: #ff5757;}
-.ContainerAuthoriz .lineBtn .btnReg{background: #7979e2;}
-.btnReg a, .btnLog a{color: #fff;}
+.ContainerAuthoriz .lineBtn .btnReg, .btnBack{background: #7979e2;}
+.btnReg a, .btnLog a, .btnBack a{color: #fff;}
 
 
 /*containerMenu*/
-.mainContainer{width: 80%; height: auto; min-height: 450px;  background: #262730;
-    /*margin: 20px auto 0px ;*/
-    display: flex }
+.mainContainer{width: 80%; height: auto; min-height: 450px; max-height: 520px; background: #262730; display: flex }
 
 .containerMenu{width: 35%; height: auto; min-height: 450px; border-right: 1px solid #000; padding-bottom: 30px;}
 .contUser{width: 100%; height: auto; padding: 30px;}
-.userImg{width: 150px; height: 150px; border-radius: 50%; border:3px solid #fff; margin:  0px auto 15px;  }
+.userImg{width: 150px; height: 150px; border-radius: 50%; border:3px solid #fff; margin:  0px auto 15px;
+    background: url("../images/usericon.png"); background-size: cover; background-position: center; background-repeat: no-repeat;}
+
 .userName{font-family: "Open Sans"; font-size: 20px; color:#fff; text-align: center; margin-bottom: 15px;}
 .btnSetting{width: 70%; height: 45px; line-height: 45px; background: #ff5757; border-radius: 5px; text-align: center; color:#fff;
     font-size: 18px; margin:0 auto 15px; cursor: pointer;}
+
+
 .line_menu{width: 100%; height: 50px;background: #3a3a46; border-bottom: 1px solid #2f3d4b; padding: 0 0 0 50px;
     margin-bottom: 5px; cursor: pointer;}
 .line_menu a{display: block; width: 100%}
@@ -51,6 +55,9 @@ body{width: 100%; height: 100vh; padding: 30px; background: url("../images/backg
 .containerContent{width: 75%; height: auto; min-height: 450px;  padding: 30px 20px}
 .listContent{width: 100%; height: 100%; padding-top: 10px; background: url("../images/cat_sleep.png") no-repeat;
     background-size: 50% ; background-position: center; }
+
+
+
 
 
 /*блок новой консультации*/
@@ -113,10 +120,9 @@ margin-bottom: 20px; border-radius: 5px;}
 .lineConsult{display: flex; justify-content: space-between; margin-bottom: 10px; background: #3a3a46;padding: 6px 10px;}
 .lineConsult p{font-family: "Open Sans"; font-size: 22px; font-weight: lighter; color:#fff; line-height: 24px;}
 .wrapBtn{display: flex; justify-content: space-between;}
-/*.del{width: 24px; height: 24px; cursor: pointer; margin-right: 15px; background:  #ff5757}*/
+
 .del{width: 24px; height: 24px; cursor: pointer; margin-right: 15px; background: url("../images/x.png") no-repeat;
     background-size: cover; background-position: center;}
-/*.more{width: 24px; height: 24px; cursor: pointer; background: #7979e2}*/
 .more{width: 24px; height: 24px; cursor: pointer; background: url("../images/arrow-18.png") no-repeat;
     background-size: cover; background-position: center;}
 
@@ -127,4 +133,9 @@ margin-bottom: 20px; border-radius: 5px;}
 .lineVisitor:hover .del{ background: url("../images/xRed.png") no-repeat;background-size: cover; background-position: center;}
 .lineInfo p{width: 50%}
 .containerConsultInfo .btnAdd{width: 60px; height: auto; background:#ff5757; margin-left: calc(100% - 100px)  }
+
+
+
+.shadow{width: 100%; height: 100vh; background: rgba(124, 116, 129, 0); position: fixed; z-index: 50;
+    top: 0; left: 0; display: none}
 

@@ -23,11 +23,13 @@ function action_getAllByUser(){
 }
 function action_deleteConsult(){
     core_load_model("consults");
+    core_load_model("visitors");
     if(is_empty(@$_POST["id"])){
         echo "no";
         return;
     }
     model_consults_deleteById(@$_POST["id"]);
+    model_visitors_deleteByConsult(@$_POST["id"]);
     echo "yes";
 }
 

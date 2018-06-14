@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" type="text/css" href="/PROGECT/Consults/css/style.css">
-    <script type="text/javascript" src="/PROGECT/Consults/script.js"></script>
     <title><?=$title?></title>
     <script src="/PROGECT/Consults/script/authwindows.js"></script>
 
+
 </head>
-<body>
+<body class="fon">
 
 <?php include $content;?>
 

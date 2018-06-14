@@ -1,3 +1,5 @@
+<script src="script/login.js"></script>
+
 <div class="ContainerAuthoriz Auth">
     <h2>User Login</h2>
     <form action="login" class="Authoriz" method="post" enctype="multipart/form-data">
@@ -45,7 +47,11 @@
             <div class="icon reg"></div>
         </div>
         <div class="lineBtn">
+<<<<<<< HEAD
             <div class="btnLog" id="showLogin">
+=======
+            <div class="btnLog showLogin">
+>>>>>>> a413f7b1bdb5003f9739df71812ff5b9d1f6116a
                 <a href="#">LOGIN</a>
             </div>
             <div class="btnReg">
@@ -68,9 +74,13 @@
         </div>
         <div class="lineBtn">
             <div class="btnLog">
-                <input type="submit" value="SEND" id="log">
+                <input type="submit" value="SEND" id="logR">
             </div>
+<<<<<<< HEAD
             <div class="btnReg" id="back">
+=======
+            <div class="btnBack" >
+>>>>>>> a413f7b1bdb5003f9739df71812ff5b9d1f6116a
                 <a href="#">BACK</a>
             </div>
         </div>
