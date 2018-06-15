@@ -49,7 +49,7 @@ page.mainMenu={
     bindEvent:function () {
         this.btnAddConsult.addEventListener("click", this.onClickAddConsult.bind(this));
         this.btnListConsults.addEventListener("click",this.onClickListConsults.bind(this));
-        this.btnSetting.addEventListener("click",this.chengStyle.bind(this));
+        // this.btnSetting.addEventListener("click",this.chengStyle.bind(this));
     },
     onClickAddConsult:function () {
         page.addConsult.show();
@@ -60,11 +60,7 @@ page.mainMenu={
         page.userConsults.show();
         page.addConsult.hide();
         page.consultInfo.hide();
-    },
-    chengStyle:function () {
-
     }
-
 };
 page.addConsult={
     init:function () {
