@@ -1,1 +1,3 @@
-<div class="error404" style="width: 100%; height:100vh; background-image: url('images/404.png')"></div>
+<div class="error404">
+    <a href="/PROGECT/Consults/">HOME</a>
+</div>
