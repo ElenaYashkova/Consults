@@ -7,7 +7,7 @@ var AJAX={
         for(var key in params) data.append(key,params[key]);
         xhr.onreadystatechange = function () {
             if(xhr.readyState!== 4) return;
-            if(xhr.status===200) callback(xhr.responseText);
+            if(xhr.status===200) callback(xhr.responseText.replace(/\<.*\>/igm,"").trim());
             else if(onerror) onerror();
         };
         xhr.send(data);

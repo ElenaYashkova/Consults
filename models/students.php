@@ -30,12 +30,10 @@ function model_students_getAllByIdGroup($id_group){
 
 function model_students_getById($id){
     $students=model_students_getAll();
-//    return array_shift(array_filter($students, function ($student) use ($id){
-//        return $student["id"]==$id;
-//    }));
     foreach ($students as $student){
         if($student["id"]===$id) return $student;
     }
+    return NULL;
 };
 
 function model_students_deleteById($id){
