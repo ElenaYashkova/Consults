@@ -8,10 +8,8 @@
 
     <link rel="stylesheet" type="text/css" href="/PROGECT/Consults/css/style.css">
     <title><?=$title?></title>
-    <script src="/PROGECT/Consults/script/authwindows.js"></script>
-
-
 </head>
+
 <body class="fon">
 
 <?php include $content;?>

@@ -59,8 +59,7 @@ page.mainMenu= {
         page.addConsult.hide();
         page.consultInfo.hide();
     }
-}
-;
+};
 page.addConsult={
     init:function () {
         this.container=document.querySelector("#addNewConsult");
