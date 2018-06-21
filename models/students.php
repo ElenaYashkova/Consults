@@ -7,8 +7,8 @@ function model_students_getAll(){
 function model_students_add($id_group,$name,$surname){
     core_appendToArrayInFile("student",[
         "id"=>time()."_".rand(0, 9999),
-        "name"=>mb_convert_case(strtolower($name),MB_CASE_TITLE, "UTF-8"),
-        "surname"=>mb_convert_case(strtolower($surname),MB_CASE_TITLE, "UTF-8"),
+        "name"=>strtolower($name),
+        "surname"=>strtolower($surname),
         "id_group"=>$id_group
     ]);
 }

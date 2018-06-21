@@ -1,3 +1,8 @@
+String.prototype.toTitleCase = function (){
+    return this.split(/\s/).map(function(item){
+        return (item.charAt(0).toUpperCase() + item.slice(1))
+    }).join(' ')
+};
 
 var AJAX={
     post:function (url, params, callback, onerror) {
@@ -127,9 +132,9 @@ page.addConsult={
                 var p=document.createElement("p");
                 p.className="visitor";
                 var spanSurname=document.createElement("span");
-                spanSurname.innerText=" "+student["surname"];
+                spanSurname.innerText=" "+student["surname"].toTitleCase();
                 var spanName=document.createElement("span");
-                spanName.innerText=student["name"];
+                spanName.innerText=student["name"].toTitleCase();
                 var num=document.createElement("span");
                 num.innerText=number+". ";
                 p.appendChild(num);
@@ -211,7 +216,7 @@ page.formVisitor={
         students.forEach(function (student) {
             var option=document.createElement("option");
             option.setAttribute("value",student["id"]);
-            option.innerText=student["name"]+" "+student["surname"];
+            option.innerText=student["name"].toTitleCase()+" "+student["surname"].toTitleCase();
             this.studentSelect.appendChild(option);
         }.bind(this));
         if(students.length>0){
@@ -477,9 +482,9 @@ page.consultInfo={
             var p=document.createElement("p");
             p.className="visitor";
             var spanSurname=document.createElement("span");
-            spanSurname.innerText=" "+student["surname"];
+            spanSurname.innerText=" "+student["surname"].toTitleCase();
             var spanName=document.createElement("span");
-            spanName.innerText=student["name"];
+            spanName.innerText=student["name"].toTitleCase();
             var num=document.createElement("span");
             num.innerHTML=number+".  ";
             p.appendChild(num);
