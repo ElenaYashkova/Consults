@@ -4,7 +4,7 @@ function model_group_getAll(){
      return core_loadArrayFromFile("group");
 }
 
-function _group_saveGroupsArray($groups):void{
+function _group_saveGroupsArray($groups){
     core_saveArrayToFile("group",$groups);
 }
 

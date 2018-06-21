@@ -7,8 +7,8 @@ function model_students_getAll(){
 function model_students_add($id_group,$name,$surname){
     core_appendToArrayInFile("student",[
         "id"=>time()."_".rand(0, 9999),
-        "name"=>ucfirst(strtolower($name)),
-        "surname"=>ucfirst(strtolower($surname)),
+        "name"=>mb_convert_case(strtolower($name),MB_CASE_TITLE, "UTF-8"),
+        "surname"=>mb_convert_case(strtolower($surname),MB_CASE_TITLE, "UTF-8"),
         "id_group"=>$id_group
     ]);
 }
@@ -30,12 +30,10 @@ function model_students_getAllByIdGroup($id_group){
 
 function model_students_getById($id){
     $students=model_students_getAll();
-//    return array_shift(array_filter($students, function ($student) use ($id){
-//        return $student["id"]==$id;
-//    }));
     foreach ($students as $student){
         if($student["id"]===$id) return $student;
     }
+    return NULL;
 };
 
 function model_students_deleteById($id){

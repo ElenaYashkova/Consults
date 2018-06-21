@@ -7,7 +7,7 @@ var AJAX={
         for(var key in params) data.append(key,params[key]);
         xhr.onreadystatechange = function () {
             if(xhr.readyState!== 4) return;
-            if(xhr.status===200) callback(xhr.responseText);
+            if(xhr.status===200) callback(xhr.responseText.replace(/\<.*\>/igm,"").trim());
             else if(onerror) onerror();
         };
         xhr.send(data);
@@ -37,35 +37,30 @@ var page ={
         this.consultInfo.init();
     }
 };
-page.mainMenu={
-    init:function () {
-        this.container=document.querySelector(".containerMenu");
-        this.btnAddConsult=this.container.querySelector("#addConsult");
-        this.btnListConsults=this.container.querySelector("#consultList");
-        this.btnSetting=this.container.querySelector("btnSetting");
+page.mainMenu= {
+    init: function () {
+        this.container = document.querySelector(".containerMenu");
+        this.btnAddConsult = this.container.querySelector("#addConsult");
+        this.btnListConsults = this.container.querySelector("#consultList");
         this.bindEvent();
 
     },
-    bindEvent:function () {
+    bindEvent: function () {
         this.btnAddConsult.addEventListener("click", this.onClickAddConsult.bind(this));
-        this.btnListConsults.addEventListener("click",this.onClickListConsults.bind(this));
-        this.btnSetting.addEventListener("click",this.chengStyle.bind(this));
+        this.btnListConsults.addEventListener("click", this.onClickListConsults.bind(this));
     },
-    onClickAddConsult:function () {
+    onClickAddConsult: function () {
         page.addConsult.show();
         page.consultInfo.hide();
         page.userConsults.hide();
     },
-    onClickListConsults:function () {
+    onClickListConsults: function () {
         page.userConsults.show();
         page.addConsult.hide();
         page.consultInfo.hide();
-    },
-    chengStyle:function () {
-
     }
-
-};
+}
+;
 page.addConsult={
     init:function () {
         this.container=document.querySelector("#addNewConsult");

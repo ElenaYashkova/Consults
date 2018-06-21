@@ -1,5 +1,5 @@
 <?php
-function model_getAllTagsByClass($f_name,$tag_name,$class_name):array {
+function model_getAllTagsByClass($f_name,$tag_name,$class_name) {
     $html = file_get_contents($f_name);
     $tagname = $tag_name;
     $classname = $class_name;
@@ -31,4 +31,3 @@ function model_getAllTagsByClass($f_name,$tag_name,$class_name):array {
     }
     return $arr;
 }
-//print_r(allTagsByClass("x.html","div","b"));
