@@ -29,7 +29,7 @@ function core_removeFromArrayInFile($name, $index){
     core_saveArrayToFile($name,$arr);
 };
 
-function core_render($view, array $data=[], $templates="default"){
+function core_render($view, array $data=[], $templates="default", $style="style"){
     $content = VIEWS_PATH.$view.".php";
     extract($data);
     include TEMPLATES_PATH.$templates.".php";
@@ -66,8 +66,7 @@ function core_navigate(){
             return;
         }
     }
-    //echo "404";
-    core_render("404");
+    core_render("404", $data=[], $templates="default", $style="404");
 }
 
 function core_back(){
